@@ -52,7 +52,7 @@ class CheckOutScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   defaultformfield(
                     controller: firstnamecontroller,
                     type: TextInputType.name,
