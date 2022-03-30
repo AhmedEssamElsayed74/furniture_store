@@ -90,7 +90,7 @@ class CheckOutScreen extends StatelessWidget {
                     },
                     label: 'Email Address',
                     prefix: Icons.email_outlined,
-                  ),SizedBox(
+                  ),const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
