@@ -1,0 +1,253 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:furniture_store/modules/user/login/login_screen.dart';
+import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
+import 'package:furniture_store/modules/user/register/cubit/cubit.dart';
+import 'package:furniture_store/modules/user/register/cubit/states.dart';
+import 'package:furniture_store/shared/component/component.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
+
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({Key? key}) : super(key: key);
+
+
+
+
+  var namecontroller = TextEditingController();
+
+  var emailcontroller = TextEditingController();
+
+  var passwordcontroller = TextEditingController();
+
+  var phonecontroller = TextEditingController();
+
+  var formkey = GlobalKey<FormState>();
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => RegisterCubit(),
+      child: BlocConsumer<RegisterCubit, Registerstates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = RegisterCubit.get(context);
+
+          return Scaffold(
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: formkey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Center(
+                            child: Lottie.network(
+                              'https://assets6.lottiefiles.com/packages/lf20_u8o7BL.json',
+                              width: 180,
+                              height: 180,
+                            ),
+                          ),
+
+                          const SizedBox(
+                            height: 15.0,
+                          ),
+                          const Center(
+                            child: Text(
+                              'Register ',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          defaultformfield(
+                            controller: namecontroller,
+                            type: TextInputType.name,
+                            validate: (value) {
+                              if (value.isEmpty) {
+                                return 'name must not be empty';
+                              }
+                            },
+                            label: 'User Name',
+                            prefix: Icons.person,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          defaultformfield(
+                            controller: emailcontroller,
+                            type: TextInputType.emailAddress,
+                            validate: (value) {
+                              if (value.isEmpty) {
+                                return 'email must not be empty';
+                              }
+                            },
+                            label: 'Email Address',
+                            prefix: Icons.email_outlined,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          defaultformfield(
+                            controller: passwordcontroller,
+                            type: TextInputType.visiblePassword,
+                            suffix: RegisterCubit.get(context).suffix,
+                            onSubmit: (value) {},
+                            suffixPressed: (value) {
+                              RegisterCubit.get(context).changepassword();
+                            },
+                            validate: (value) {
+                              if (value.isEmpty) {
+                                return 'password must not be empity';
+                              }
+                            },
+                            isPassword: RegisterCubit.get(context).isPassword,
+                            label: 'password',
+                            prefix: Icons.lock_outline_rounded,
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          defaultformfield(
+                            controller: phonecontroller,
+                            type: TextInputType.phone,
+                            validate: (value) {
+                              if (value.isEmpty) {
+                                return 'phone must not be empty';
+                              }
+                            },
+                            label: 'phone',
+                            prefix: Icons.phone,
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children:
+                            [
+                              Checkbox(value: cubit.privacy,
+                                onChanged: (value)
+                                {
+                                    cubit.changeprivacy();
+                                },
+                              ),
+                              SizedBox(width: 2,),
+                              Text("I agree with"),
+                              TextButton(onPressed: (){
+                                navigateto(context, PrivacyScreen());
+                              }, child: Text("Privacy and Terms"))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Radio(
+                                    value: true,
+                                    groupValue: cubit.values,
+                                    onChanged: (bool? value) {
+
+                                        cubit.changevalue();
+
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 0.0,
+                                  ),
+                                  Text('User'),
+                                  SizedBox(
+                                    width: 60.0,
+                                  ),
+                                  Radio(
+                                    value: false,
+                                    groupValue: cubit.values,
+                                    onChanged: (bool? value) {
+
+                                        cubit.changevalue() ;
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  Text('Seller'),
+                                ],
+                              ),
+                            ],
+                          ),
+
+
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          ConditionalBuilder(
+                            condition: state is! RegisterLoadingstate,
+                            builder: (context) => Center(
+                              child: defaultButton(
+                                function: () {
+                                  // if (formkey.currentState!.validate()) {
+                                  //   RegisterCubit.get(context).UserRegister(
+                                  //     name: namecontroller.text,
+                                  //     email: emailcontroller.text,
+                                  //     password: passwordcontroller.text,
+                                  //     phone: phonecontroller.text,
+                                  //   );
+                                  // }
+                                  navigateAndFinish(context, LogingScreen(),
+                                  );
+                                },
+                                text: 'Register',
+                                isUppercase: true,
+                              ),
+                            ),
+                            fallback: (context) =>
+                                Center(child: CircularProgressIndicator()),
+                          ),
+                          const SizedBox(height: 15,),
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Already have an account ?',
+                                ),
+                                defaultTextButton(function: () {
+                                  navigateAndFinish(context, LogingScreen());
+                                },
+                                  text: 'sign in',),
+                              ],
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
