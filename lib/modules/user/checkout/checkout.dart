@@ -160,8 +160,6 @@ class CheckOutScreen extends StatelessWidget {
                     fallback: (context) =>
                         Center(child: CircularProgressIndicator()),
                   ),
-
-
                 ],
               ),
             ),
