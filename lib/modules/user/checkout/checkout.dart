@@ -1,13 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:furniture_store/modules/user/login/login_screen.dart';
-import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
-import 'package:furniture_store/modules/user/register/cubit/cubit.dart';
-import 'package:furniture_store/modules/user/register/cubit/states.dart';
 import 'package:furniture_store/shared/component/component.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:lottie/lottie.dart';
+
 
 class CheckOutScreen extends StatelessWidget {
   CheckOutScreen({Key? key}) : super(key: key);
@@ -30,8 +24,6 @@ class CheckOutScreen extends StatelessWidget {
 
   var formkey = GlobalKey<FormState>();
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +31,7 @@ class CheckOutScreen extends StatelessWidget {
         title: const Text(
           'Checkout',
           style: TextStyle(
-            color: Colors.white
+            color: Colors.white,
           ),
         ),
       ),
@@ -142,18 +134,7 @@ class CheckOutScreen extends StatelessWidget {
                     condition: true,
                     builder: (context) => Center(
                       child: defaultButton(
-                        function: () {
-                          // if (formkey.currentState!.validate()) {
-                          //   RegisterCubit.get(context).UserRegister(
-                          //     name: namecontroller.text,
-                          //     email: emailcontroller.text,
-                          //     password: passwordcontroller.text,
-                          //     phone: phonecontroller.text,
-                          //   );
-                          // }
-                          navigateAndFinish(context, LogingScreen(),
-                          );
-                        },
+                        function: () {},
                         text: 'Confirm',
                       ),
                     ),

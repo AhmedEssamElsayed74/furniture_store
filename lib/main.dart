@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/shared/style/bloc_observer.dart';
 import 'package:furniture_store/shared/style/theme.dart';
-import 'modules/user/login/login_screen.dart';
+import 'modules/user/splash screen/splash_screen.dart';
 
 
 void main()  {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         // darkTheme: darkTheme,
         // themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-        home: LogingScreen(),
+        home: SplashScreen(),
       );
   }
 }

@@ -8,7 +8,6 @@ import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/setting/setting_screen.dart';
 import 'package:furniture_store/modules/user/search/search_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
-import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ShopLayout extends StatelessWidget {
@@ -43,6 +42,16 @@ class ShopLayout extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      HexColor('#087083'),
+                      HexColor('#087083'),
+                    ],
+                  )
+                ),
+              ),
               title: Text(
                 cubit.titlesScreen[cubit.currentindex],
                 style: TextStyle(
@@ -105,9 +114,8 @@ class ShopLayout extends StatelessWidget {
               ],
             ),
             drawer: Drawer(
-              child: Container(
-                padding: EdgeInsets.all(20),
-                color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: ShopCubit.get(context).index == 0
@@ -124,12 +132,15 @@ class ShopLayout extends StatelessWidget {
 
   List<Widget> getList1(context) {
     return [
-      Container(
-        height: 250,
-        child: Center(
-            child: Image(
-                image: NetworkImage(
-                    'https://dcassetcdn.com/design_img/3642209/41418/41418_20429874_3642209_a702864e_image.jpg'))),
+      Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Image(
+            image: AssetImage(
+                'image/Capture.png',
+            ),
+          fit: BoxFit.cover,
+
+        ),
       ),
       ListTile(
         title: Text(
@@ -229,6 +240,7 @@ class ShopLayout extends StatelessWidget {
       ),
       Expanded(
         child: ListView.separated(
+          physics: BouncingScrollPhysics(),
             itemBuilder: (context,index)=>  ListTile(
             title: Text(
               categoriesItems[index],
