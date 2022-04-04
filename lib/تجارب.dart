@@ -539,6 +539,29 @@
 // }
 
 
+List homepicture = [
+  'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163641874-163641874-HC27062021_02-750-1.jpg?v=1',
+  'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163639532-163639532-HC11102021_02-750-1.jpg',
+  'https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg',
+  'https://i.pinimg.com/736x/c2/03/bb/c203bb64b6d658c34d56e485e7a11224.jpg',
+  'https://i.pinimg.com/564x/31/c3/db/31c3dbc6d38e11a452e902d8775a5aa4.jpg',
+];
+
+List picturetext = [
+  'Galaxy Metal Floor Lamp',
+  'Piece Glass Top Coffee',
+  'Century Club Chair',
+  'Home Office Design',
+  'Tapete Sala e Quarto',
+];
+
+List pictureprice = [
+  '50.000 EGP',
+  '30.000 EGP',
+  '2.000 EGP',
+  '14.000 EGP',
+  '22.000 EGP',
+];
 
 
 
