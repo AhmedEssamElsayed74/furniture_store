@@ -17,13 +17,13 @@ class NewPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            navigateAndFinish(context, LogingScreen());
+            navigateAndFinish(context, LoginScreen());
           },
-          icon: Icon(Icons.arrow_back,
+          icon: const Icon(Icons.arrow_back,
             color: Colors.white,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Change Password',
           style: TextStyle(
             fontSize: 24,
@@ -53,7 +53,7 @@ class NewPasswordScreen extends StatelessWidget {
                 label: 'password',
                 prefix: Icons.lock_outline_rounded,
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
         defaultformfield(
           controller: passwordcontroller,
           type: TextInputType.text,
@@ -71,7 +71,7 @@ class NewPasswordScreen extends StatelessWidget {
           prefix: Icons.lock_outline_rounded,
         ),
 
-            SizedBox(height: 40.0,),
+            const SizedBox(height: 40.0,),
             Center(child: defaultButton(function: (){}, text: 'confirm',)),
 
           ],

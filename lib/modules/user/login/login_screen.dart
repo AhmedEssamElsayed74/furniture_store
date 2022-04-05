@@ -7,11 +7,10 @@ import 'package:furniture_store/modules/user/login/cubit/states.dart';
 import 'package:furniture_store/modules/user/password/newpassword_screen.dart';
 import 'package:furniture_store/modules/user/register/register_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 
-class LogingScreen extends StatelessWidget {
-  LogingScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
 
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
@@ -49,10 +48,10 @@ class LogingScreen extends StatelessWidget {
                           height: 200,
                         ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15.0,
                         ),
-                        Center(
+                        const Center(
                           child: Text(
                             'Login ',
                             style: TextStyle(
@@ -62,7 +61,7 @@ class LogingScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20.0,
                         ),
                         defaultformfield(
@@ -76,7 +75,7 @@ class LogingScreen extends StatelessWidget {
                           label: 'Email Address',
                           prefix: Icons.email_outlined,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30.0,
                         ),
                         defaultformfield(
@@ -85,9 +84,8 @@ class LogingScreen extends StatelessWidget {
                           suffix: LogingCubit.get(context).suffix,
                           onSubmit: (value) {
                             if (formkey.currentState!.validate()) {
-                              // LogingCubit.get(context).UserLogin(
-                              //   email: emailcontroller.text,
-                              //   password: passwordcontroller.text,);
+                                email: emailcontroller.text;
+                                password: passwordcontroller.text;
                             }
                           },
                           suffixPressed: (value) {
@@ -102,7 +100,7 @@ class LogingScreen extends StatelessWidget {
                           label: 'password',
                           prefix: Icons.lock_outline_rounded,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20.0,
                         ),
                         defaultTextButton(
@@ -127,7 +125,7 @@ class LogingScreen extends StatelessWidget {
                                 }
                                 navigateto(
                                   context,
-                                  ShopLayout(),
+                                  const ShopLayout(),
                                 );
                               },
                               text: 'sign in',
@@ -135,9 +133,9 @@ class LogingScreen extends StatelessWidget {
                             ),
                           ),
                           fallback: (context) =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Center(
@@ -150,7 +148,7 @@ class LogingScreen extends StatelessWidget {
                                 height: 2,
                                 color: Colors.grey[300],
                               ),
-                              Text(
+                              const Text(
                                 'OR',
                                 style: TextStyle(
                                   fontSize: 20,
@@ -164,7 +162,7 @@ class LogingScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Center(
@@ -174,7 +172,7 @@ class LogingScreen extends StatelessWidget {
                             children: [
                               IconButton(
                                 onPressed: () {  },
-                                icon: Image(
+                                icon: const Image(
                                   image: NetworkImage(
                                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFYlHW5VAtVqztT1KUbXoC6QA0JnQEAPUYsRWSFF_49cflsmLrQLhZp6hwtrDU2XFoLFs&usqp=CAU',
                                   ),
@@ -185,7 +183,7 @@ class LogingScreen extends StatelessWidget {
 
                               IconButton(
                                 onPressed: () {  },
-                                icon: Image(
+                                icon: const Image(
                                     image: NetworkImage(
                                         'https://dailytimes.com.pk/assets/uploads/2022/01/28/unnamed.png',
                                     ),
@@ -199,7 +197,7 @@ class LogingScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Don\'t have an account?',
                               ),
                               defaultTextButton(

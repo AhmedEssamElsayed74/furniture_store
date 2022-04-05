@@ -8,57 +8,10 @@ import 'package:furniture_store/modules/user/ditals/ditals_screen.dart';
 import 'package:furniture_store/modules/user/item/item_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
-class ProductScreen extends StatefulWidget {
+class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
 
-  @override
-  State<ProductScreen> createState() => _ProductScreenState();
-}
 
-class _ProductScreenState extends State<ProductScreen> {
-  List items = [
-    'https://i.pinimg.com/736x/79/11/b9/7911b9cac1f574e675d4b5d3903207e6.jpg',
-    'https://i.pinimg.com/564x/db/51/95/db519529496b547c93d1ad8b230559b0.jpg',
-    'https://d13r0hznkpv24o.cloudfront.net/media/catalog/product/cache/74cf99c86332999c0c5bbe50aaa1b73c/l/e/lego_5_1.png',
-    'https://i.pinimg.com/originals/ac/43/f5/ac43f531373013c83d1af9a3fddc931e.jpg',
-    'https://i.pinimg.com/564x/79/d3/4e/79d34ee3f5dc45477308641955db6117.jpg',
-  ];
-
-  List categoriesItems = [
-    'Bed Room',
-    'Kids Room',
-    'Dining Room',
-    'Living Room',
-    'Salon',
-    'Kitchen',
-    'Offices',
-    'Antiques',
-    'Carpets',
-    'Lighting',
-    'Chairs',
-    'Curtains',
-    'Table',
-    'Out door',
-    'Appliances',
-  ];
-
-  List picture = [
-    'image/bedroom.png',
-    'image/kids room.png',
-    'image/dining room.png',
-    'image/living room.png',
-    'image/salon.png',
-    'image/kitchen.png',
-    'image/office.png',
-    'image/antiques.png',
-    'image/carpet.png',
-    'image/lighting.png',
-    'image/chair.png',
-    'image/curtain.png',
-    'image/tables.png',
-    'image/outdoor.png',
-    'image/appliances.png',
-  ];
 
 
   @override
@@ -66,6 +19,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
+        var cubit=ShopCubit.get(context);
         return Scaffold(
           backgroundColor: Colors.white,
           body: Padding(
@@ -77,7 +31,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CarouselSlider(
-                    items: items
+                    items: cubit.items
                         .map((image) => Builder(
                               builder: (BuildContext context) {
                                 return Container(
@@ -127,7 +81,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         onTap: () {
                           navigateto(
                             context,
-                            ItemScreen(categoriesItems[index]),
+                            ItemScreen(cubit.categoriesItems[index]),
                           );
                         },
                         child: Container(
@@ -145,7 +99,7 @@ class _ProductScreenState extends State<ProductScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image(
-                                  image: AssetImage(picture[index]),
+                                  image: AssetImage(cubit.picture[index]),
                                   width: 20,
                                   height: 20,
                                 ),
@@ -153,7 +107,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                   height: 5,
                                 ),
                                 Text(
-                                  '${categoriesItems[index]}',
+                                  '${cubit.categoriesItems[index]}',
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 13,
@@ -167,7 +121,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       separatorBuilder: (context, index) => const SizedBox(
                         width: 5.0,
                       ),
-                      itemCount: categoriesItems.length,
+                      itemCount: cubit.categoriesItems.length,
                     ),
                   ),
                   const SizedBox(

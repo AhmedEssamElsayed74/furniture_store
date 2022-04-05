@@ -17,7 +17,7 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(onPressed: () { Navigator.pop(context); },
-        icon: Icon(Icons.arrow_back,color: Colors.black,)),
+        icon: const Icon(Icons.arrow_back,color: Colors.black,)),
 
       ),
      body: Column(
@@ -25,13 +25,13 @@ class DetailsScreen extends StatelessWidget {
        [
         Center(
           child: Container(
-            child: Image(image: NetworkImage('https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg'),
+            child: const Image(image: NetworkImage('https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg'),
               width: 400,
               height: 200,
             ),
           ),
         ),
-         SizedBox(height: 15,),
+         const SizedBox(height: 15,),
          Expanded(
            child: Container(
              width: double.infinity,
@@ -47,7 +47,7 @@ class DetailsScreen extends StatelessWidget {
                    child: Column(
                      mainAxisAlignment: MainAxisAlignment.start,
                      crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
+                     children: const [
                        Text(
                          'Century Club Chair ',
                          maxLines: 1,
@@ -88,7 +88,7 @@ class DetailsScreen extends StatelessWidget {
                      children: [
                        Container(
                          decoration: BoxDecoration(
-                           borderRadius: BorderRadiusDirectional.only(
+                           borderRadius: const BorderRadiusDirectional.only(
                              topEnd: Radius.circular(30.0),
                              topStart: Radius.circular(30.0),
 
@@ -102,7 +102,7 @@ class DetailsScreen extends StatelessWidget {
                              mainAxisAlignment: MainAxisAlignment.start,
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children:
-                             [
+                             const [
                                Text(
                                  'About: ',
                                  maxLines: 1,
@@ -119,7 +119,7 @@ class DetailsScreen extends StatelessWidget {
                        ),
                        Container(
                          decoration: BoxDecoration(
-                           borderRadius: BorderRadius.only(
+                           borderRadius: const BorderRadius.only(
                              topLeft: Radius.circular(40),
                              topRight: Radius.circular(40),
                            ),
@@ -129,7 +129,7 @@ class DetailsScreen extends StatelessWidget {
                          child: Row(
                            children:
                            [
-                             SizedBox(width: 35,),
+                             const SizedBox(width: 35,),
                              Container(
                                decoration: BoxDecoration(
                                  borderRadius: BorderRadius.circular(10),
@@ -138,10 +138,10 @@ class DetailsScreen extends StatelessWidget {
                                width: 45,
                                height: 45,
                                child: IconButton(
-                                 icon: Icon(Icons.favorite_outline_rounded,size: 25,), onPressed: (){},
+                                 icon: const Icon(Icons.favorite_outline_rounded,size: 25,), onPressed: (){},
                                ),
                              ),
-                             SizedBox(width: 65,),
+                             const SizedBox(width: 65,),
                              Container(
                                decoration: BoxDecoration(
                                  borderRadius: BorderRadius.circular(10),
@@ -151,7 +151,7 @@ class DetailsScreen extends StatelessWidget {
                                height: 45,
                                child: TextButton(
                                   onPressed: () { navigateto(context, CheckOutScreen()); },
-                                  child: Text('Checkout',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                                  child: const Text('Checkout',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
                                )
                              ),
 

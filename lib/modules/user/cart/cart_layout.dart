@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:furniture_store/layout/cubit/cubit.dart';
-import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/checkout/checkout.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:furniture_store/shared/style/color.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CartLayout extends StatefulWidget {
-   CartLayout({Key? key}) : super(key: key);
+   const CartLayout({Key? key}) : super(key: key);
 
   @override
   State<CartLayout> createState() => _CartLayoutState();
@@ -23,7 +20,7 @@ class _CartLayoutState extends State<CartLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart',style: TextStyle(color: Colors.white),),
+        title: const Text('Cart',style: TextStyle(color: Colors.white),),
         backgroundColor: HexColor('#087083'),
       ),
       body:  Padding(
@@ -32,7 +29,7 @@ class _CartLayoutState extends State<CartLayout> {
           children: [
             Expanded(
               child: ListView.separated(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => Container(
                   height: 200,
                   child: Card(
@@ -78,7 +75,7 @@ class _CartLayoutState extends State<CartLayout> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -112,7 +109,7 @@ class _CartLayoutState extends State<CartLayout> {
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   IconButton(
                                     onPressed: () {
                                       var alert = AlertDialog(
@@ -130,7 +127,7 @@ class _CartLayoutState extends State<CartLayout> {
                                               child: Row(
                                                 children: [
                                                   Padding(
-                                                    padding: EdgeInsets.only(
+                                                    padding: const EdgeInsets.only(
                                                         left: 10.0),
                                                     child: TextButton(
                                                         onPressed: () {},
@@ -146,7 +143,7 @@ class _CartLayoutState extends State<CartLayout> {
                                                           ),
                                                         )),
                                                   ),
-                                                  Spacer(),
+                                                  const Spacer(),
                                                   TextButton(
                                                       onPressed: () {},
                                                       child: const Text(
@@ -166,7 +163,7 @@ class _CartLayoutState extends State<CartLayout> {
                                           context: context,
                                           builder: (context) => alert);
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.delete,
                                     ),
                                   ),
@@ -179,7 +176,7 @@ class _CartLayoutState extends State<CartLayout> {
                     ),
                   ),
                 ),
-                separatorBuilder: (context, index) => SizedBox(height: 20),
+                separatorBuilder: (context, index) => const SizedBox(height: 20),
                 itemCount: 10,
                 shrinkWrap: true,
               ),
@@ -192,11 +189,11 @@ class _CartLayoutState extends State<CartLayout> {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
                         'Total Price ' +
                             (totalprice + Itemnum[0] * 2000).toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -206,7 +203,7 @@ class _CartLayoutState extends State<CartLayout> {
                   ),
                   MaterialButton(
                     onPressed: () {navigateto(context, CheckOutScreen());},
-                    child: Text('checkout',style: TextStyle(color: Colors.white),),
+                    child: const Text('checkout',style: TextStyle(color: Colors.white),),
                     color: HexColor('#087083'),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),

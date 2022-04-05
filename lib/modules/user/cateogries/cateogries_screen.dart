@@ -7,7 +7,7 @@ import 'package:furniture_store/shared/component/component.dart';
 
 
 class CateogriesScreen extends StatelessWidget {
-  CateogriesScreen({Key? key}) : super(key: key);
+  const CateogriesScreen({Key? key}) : super(key: key);
 
 
   @override
@@ -32,10 +32,10 @@ class CateogriesScreen extends StatelessWidget {
 Widget buildCatItem() => Padding(
   padding: const EdgeInsets.all(20.0),
   child: Row(
-    children: [
+    children: const [
       Image(
         image: NetworkImage(
-          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVybml0dXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVybml0dXJlfGVufDB8fDB8fA%3d%3d&w=1000&q=80',
         ),
         width: 80.0,
         height: 80.0,

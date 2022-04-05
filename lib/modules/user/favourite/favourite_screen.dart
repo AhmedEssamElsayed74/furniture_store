@@ -9,7 +9,7 @@ import 'package:furniture_store/shared/style/color.dart';
 
 
 class FavouriteScreen extends StatelessWidget {
-  FavouriteScreen({Key? key}) : super(key: key);
+  const FavouriteScreen({Key? key}) : super(key: key);
 
 
   @override
@@ -43,7 +43,7 @@ Widget buildListProductItem( context)=>Padding(
     child: GestureDetector(
       onTap: ()
       {
-        navigateto(context, DetailsScreen());
+        navigateto(context, const DetailsScreen());
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,17 +70,17 @@ Widget buildListProductItem( context)=>Padding(
                     height: 1.1,
                   ),
                 ),
-                SizedBox(height: 15.0,),
-                Text(
+                const SizedBox(height: 15.0,),
+                const Text(
                   '25x96 cm',
                   style: TextStyle(
                     color: defaultcolor,
                   ),
                 ),
-                SizedBox(height: 15.0,),
+                const SizedBox(height: 15.0,),
 
                 Row(
-                  children: [
+                  children: const [
                     Text(
                       '100.000',
                       style: TextStyle(
@@ -99,7 +99,7 @@ Widget buildListProductItem( context)=>Padding(
                     ),
                   ],
                 ),
-                SizedBox(height: 15.0,),
+                const SizedBox(height: 15.0,),
                 Row(
                   children: [
                     RaisedButton(onPressed: ()
@@ -107,17 +107,17 @@ Widget buildListProductItem( context)=>Padding(
                       showToast(text: " The Item is added to Cart ", state: ToastState.SUCCESS);
 
                     },
-                      child: Text('add to cart',
+                      child: const Text('add to cart',
                       style: TextStyle(
                           color: Colors.white,
                       ),),
                       color: Colors.lightBlue,
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
 
                     ),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(onPressed: (){}, icon:
-                    Icon(Icons.favorite,
+                    const Icon(Icons.favorite,
                       size: 25.0,
                       color: Colors.black,
                     ),

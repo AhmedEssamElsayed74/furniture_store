@@ -56,7 +56,7 @@ ThemeData lightTheme=ThemeData(
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.white,
     ),
   ),
@@ -68,12 +68,11 @@ ThemeData lightTheme=ThemeData(
     backgroundColor: HexColor('#087083'),
   ),
 
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyText1: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
   ),
-  fontFamily: 'Jannah',
 );

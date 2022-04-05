@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -15,10 +14,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5),
+    Timer(const Duration(seconds: 5),
         ()=>Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (context)=>
-            LogingScreen()
+            LoginScreen()
         ))
     );
   }
@@ -32,14 +31,14 @@ class _SplashScreenState extends State<SplashScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
-            children: [
+            children: const [
               Image(
                   image: AssetImage('image/Capture.png'),
                 width: double.infinity,
               ),
             ],
           ),
-          CircularProgressIndicator(
+          const CircularProgressIndicator(
             color: Colors.white,
           ),
         ],

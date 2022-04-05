@@ -6,7 +6,6 @@ import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_
 import 'package:furniture_store/modules/user/register/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/register/cubit/states.dart';
 import 'package:furniture_store/shared/component/component.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -83,7 +82,7 @@ class RegisterScreen extends StatelessWidget {
                             label: 'User Name',
                             prefix: Icons.person,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           defaultformfield(
@@ -97,7 +96,7 @@ class RegisterScreen extends StatelessWidget {
                             label: 'Email Address',
                             prefix: Icons.email_outlined,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           defaultformfield(
@@ -117,7 +116,7 @@ class RegisterScreen extends StatelessWidget {
                             label: 'password',
                             prefix: Icons.lock_outline_rounded,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           defaultformfield(
@@ -131,7 +130,7 @@ class RegisterScreen extends StatelessWidget {
                             label: 'phone',
                             prefix: Icons.phone,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5.0,
                           ),
 
@@ -146,14 +145,14 @@ class RegisterScreen extends StatelessWidget {
                                     cubit.changeprivacy();
                                 },
                               ),
-                              SizedBox(width: 2,),
-                              Text("I agree with"),
+                              const SizedBox(width: 2,),
+                              const Text("I agree with"),
                               TextButton(onPressed: (){
-                                navigateto(context, PrivacyScreen());
-                              }, child: Text("Privacy and Terms"))
+                                navigateto(context, const PrivacyScreen());
+                              }, child: const Text("Privacy and Terms"))
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10.0,
                           ),
                           Row(
@@ -171,11 +170,11 @@ class RegisterScreen extends StatelessWidget {
 
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 0.0,
                                   ),
-                                  Text('User'),
-                                  SizedBox(
+                                  const Text('User'),
+                                  const SizedBox(
                                     width: 60.0,
                                   ),
                                   Radio(
@@ -186,10 +185,10 @@ class RegisterScreen extends StatelessWidget {
                                         cubit.changevalue() ;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10.0,
                                   ),
-                                  Text('Seller'),
+                                  const Text('Seller'),
                                 ],
                               ),
                             ],
@@ -204,15 +203,14 @@ class RegisterScreen extends StatelessWidget {
                             builder: (context) => Center(
                               child: defaultButton(
                                 function: () {
-                                  // if (formkey.currentState!.validate()) {
-                                  //   RegisterCubit.get(context).UserRegister(
-                                  //     name: namecontroller.text,
-                                  //     email: emailcontroller.text,
-                                  //     password: passwordcontroller.text,
-                                  //     phone: phonecontroller.text,
-                                  //   );
-                                  // }
-                                  navigateAndFinish(context, LogingScreen(),
+                                  if (formkey.currentState!.validate()) {
+                                      name:namecontroller.text;
+                                      email: emailcontroller.text;
+                                      password: passwordcontroller.text;
+                                      phone: phonecontroller.text;
+
+                                  }
+                                  navigateAndFinish(context, LoginScreen(),
                                   );
                                 },
                                 text: 'Register',
@@ -220,18 +218,18 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                             fallback: (context) =>
-                                Center(child: CircularProgressIndicator()),
+                                const Center(child: CircularProgressIndicator()),
                           ),
                           const SizedBox(height: 15,),
                           Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
+                                const Text(
                                   'Already have an account ?',
                                 ),
                                 defaultTextButton(function: () {
-                                  navigateAndFinish(context, LogingScreen());
+                                  navigateAndFinish(context, LoginScreen());
                                 },
                                   text: 'sign in',),
                               ],

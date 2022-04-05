@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/modules/user/cart_layout/cart_layout.dart';
+import 'package:furniture_store/modules/user/cart/cart_layout.dart';
 import 'package:furniture_store/modules/user/item/item_screen.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/setting/setting_screen.dart';
@@ -11,25 +11,9 @@ import 'package:furniture_store/shared/component/component.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ShopLayout extends StatelessWidget {
-  ShopLayout({Key? key}) : super(key: key);
+  const ShopLayout({Key? key}) : super(key: key);
 
-  List categoriesItems = [
-    'Bed Room',
-    'Kids Room',
-    'Dining Room',
-    'Living Room',
-    'Salon',
-    'Kitchen',
-    'Offices',
-    'Antiques',
-    'Carpets',
-    'Lighting',
-    'Chairs',
-    'Curtains',
-    'Table',
-    'Out door',
-    'Appliances',
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +38,7 @@ class ShopLayout extends StatelessWidget {
               ),
               title: Text(
                 cubit.titlesScreen[cubit.currentindex],
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),
@@ -67,11 +51,11 @@ class ShopLayout extends StatelessWidget {
                     );
                   },
                   icon: cubit.currentindex == 0
-                      ? Icon(
+                      ? const Icon(
                           Icons.search,
                           color: Colors.white,
                         )
-                      : Text(""),
+                      : const Text(""),
                 ),
               ],
             ),
@@ -132,8 +116,8 @@ class ShopLayout extends StatelessWidget {
 
   List<Widget> getList1(context) {
     return [
-      Padding(
-        padding: const EdgeInsets.only(top: 20),
+      const Padding(
+        padding: EdgeInsets.only(top: 20),
         child: Image(
             image: AssetImage(
                 'image/Capture.png',
@@ -143,21 +127,21 @@ class ShopLayout extends StatelessWidget {
         ),
       ),
       ListTile(
-        title: Text(
+        title: const Text(
           'Categories',
           style: TextStyle(color: Colors.black),
         ),
         onTap: () {
           ShopCubit.get(context).ChangeIndex(ShopCubit.get(context).index);
         },
-        leading: Icon(
+        leading: const Icon(
           Icons.category,
           color: Colors.black,
         ),
       ),
       myDivider(),
       ListTile(
-        title: Text(
+        title: const Text(
           'Favourites',
           style: TextStyle(color: Colors.black),
         ),
@@ -165,49 +149,49 @@ class ShopLayout extends StatelessWidget {
           ShopCubit.get(context).ChangeBottom(2);
           Navigator.pop(context);
         },
-        leading: Icon(
+        leading: const Icon(
           Icons.favorite_outline_rounded,
           color: Colors.black,
         ),
       ),
       myDivider(),
       ListTile(
-        title: Text(
+        title: const Text(
           'Cart',
           style: TextStyle(color: Colors.black),
         ),
         onTap: () {
-          navigateto(context, CartLayout());
+          navigateto(context, const CartLayout());
         },
-        leading: Icon(
+        leading: const Icon(
           Icons.shopping_cart,
           color: Colors.black,
         ),
       ),
       myDivider(),
       ListTile(
-        title: Text(
+        title: const Text(
           'Setting',
           style: TextStyle(color: Colors.black),
         ),
         onTap: () {
           navigateto(context, SettingScreen());
         },
-        leading: Icon(
+        leading: const Icon(
           Icons.settings,
           color: Colors.black,
         ),
       ),
       myDivider(),
       ListTile(
-        title: Text(
+        title: const Text(
           'LogOut',
           style: TextStyle(color: Colors.black),
         ),
         onTap: () {
-          navigateAndFinish(context, LogingScreen());
+          navigateAndFinish(context, LoginScreen());
         },
-        leading: Icon(
+        leading: const Icon(
           Icons.logout,
           color: Colors.black,
         ),
@@ -221,7 +205,7 @@ class ShopLayout extends StatelessWidget {
       Row(
         children: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -229,7 +213,7 @@ class ShopLayout extends StatelessWidget {
               ShopCubit.get(context).ChangeIndex(ShopCubit.get(context).index);
             },
           ),
-          Text(
+          const Text(
             "Category",
             style: TextStyle(
               fontSize: 25,
@@ -240,23 +224,24 @@ class ShopLayout extends StatelessWidget {
       ),
       Expanded(
         child: ListView.separated(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
             itemBuilder: (context,index)=>  ListTile(
             title: Text(
-              categoriesItems[index],
-              style: TextStyle(
+              ShopCubit.get(context).categoriesItems[index],
+              style: const TextStyle(
                 color: Colors.black,
               ),
             ),
             onTap: () {
-              navigateto(context, ItemScreen(categoriesItems[index]));
+              navigateto(context, ItemScreen(ShopCubit.get(context).categoriesItems[index]));
             },
           ),
             separatorBuilder:  (context,index)=> myDivider(),
-            itemCount: categoriesItems.length,
+            itemCount:ShopCubit.get(context). categoriesItems.length,
           shrinkWrap: true,
         ),
       ),
     ];
   }
 }
+

@@ -43,7 +43,7 @@ class ItemScreen extends StatelessWidget {
 
 Widget buildListProductItem(context )=> GestureDetector(
   onTap: (){
-    navigateto(context, DetailsScreen());
+    navigateto(context, const DetailsScreen());
   },
   child:Padding(
   padding: const EdgeInsets.all(20.0),
@@ -75,17 +75,17 @@ Widget buildListProductItem(context )=> GestureDetector(
                     height: 1.1,
                   ),
                 ),
-                SizedBox(height: 15.0,),
-                Text(
+                const SizedBox(height: 15.0,),
+                const Text(
                   '25x96 cm',
                   style: TextStyle(
                     color: defaultcolor,
                   ),
                 ),
-                SizedBox(height: 15.0,),
+                const SizedBox(height: 15.0,),
 
                 Row(
-                  children: [
+                  children: const [
                     Text(
                       '100.000',
                       style: TextStyle(
@@ -104,28 +104,28 @@ Widget buildListProductItem(context )=> GestureDetector(
                       ),
                   ],
                 ),
-                SizedBox(height: 15.0,),
+                const SizedBox(height: 15.0,),
                Row(
                  children: [
                 RaisedButton(onPressed: ()
                 {
                   showToast(text: " The Item is added to Cart ", state: ToastState.SUCCESS);
                 },
-                  child: Text('add to cart',
+                  child: const Text('add to cart',
                 style: TextStyle(
                   color: Colors.white
                 ),),
                   color: Colors.lightBlue,
 
                 ),
-                  Spacer(),
+                  const Spacer(),
                    IconButton(onPressed: ()
                    {
                      showToast(text: " The Item is added to Favourite ", state: ToastState.SUCCESS);
 
                    },
                      icon:
-                   Icon(Icons.favorite_outline_rounded,
+                   const Icon(Icons.favorite_outline_rounded,
                      size: 25.0,
                      color: Colors.black,
                    ),
