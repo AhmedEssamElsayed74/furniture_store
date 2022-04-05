@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
 
@@ -24,7 +23,7 @@ class SearchScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back,
+                icon: const Icon(Icons.arrow_back,
                   color: Colors.white,
                 ),
               ),

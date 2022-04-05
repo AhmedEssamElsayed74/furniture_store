@@ -55,7 +55,7 @@ class CheckOutScreen extends StatelessWidget {
                     },
                     label: 'First Name',
                     prefix: Icons.person,
-                  ),SizedBox(
+                  ),const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
@@ -69,7 +69,7 @@ class CheckOutScreen extends StatelessWidget {
                     label: 'Last Name',
                     prefix: Icons.person,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
@@ -96,7 +96,7 @@ class CheckOutScreen extends StatelessWidget {
                     label: 'Address',
                     prefix: Icons.home,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
@@ -110,21 +110,21 @@ class CheckOutScreen extends StatelessWidget {
                     label: 'Phone',
                     prefix: Icons.phone,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  defaultformfield(
-                    controller:cardcontroller,
-                    type: TextInputType.phone,
-                    validate: (value) {
-                      if (value.isEmpty) {
-                        return 'card must not be empty';
-                      }
-                    },
-                    label: 'Card Number',
-                    prefix: Icons.phone,
-                  ),
-                  SizedBox(
+                  // defaultformfield(
+                  //   controller:cardcontroller,
+                  //   type: TextInputType.phone,
+                  //   validate: (value) {
+                  //     if (value.isEmpty) {
+                  //       return 'card must not be empty';
+                  //     }
+                  //   },
+                  //   label: 'Card Number',
+                  //   prefix: Icons.phone,
+                  // ),
+                  const SizedBox(
                     height: 5.0,
                   ),
                   const SizedBox(
@@ -139,7 +139,7 @@ class CheckOutScreen extends StatelessWidget {
                       ),
                     ),
                     fallback: (context) =>
-                        Center(child: CircularProgressIndicator()),
+                        Center(child: const CircularProgressIndicator()),
                   ),
                 ],
               ),

@@ -14,7 +14,7 @@ class MessageScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back),color: Colors.white,),
-        title: Text(
+        title: const Text(
           'Notify Message',
           style: TextStyle(
             color: Colors.white

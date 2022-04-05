@@ -8,7 +8,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -37,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     height: 160,
                     width: 160,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle
                     ),
                     child: _image == null
@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 CircleAvatar(
                   backgroundColor: HexColor('#13B8D6'),
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.camera_alt,
                       color: Colors.white,
                     ),
@@ -73,11 +73,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Container(
                                 color: HexColor('#13B8D6'),
                                 child: ListTile(
-                                  leading: Icon(
+                                  leading: const Icon(
                                     Icons.image,
                                     color: Colors.white,
                                   ),
-                                  title: Text(
+                                  title: const Text(
                                     "Gallery",
                                     style: TextStyle(color: Colors.white),
                                   ),
@@ -87,17 +87,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   },
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Container(
                                 color: HexColor('#13B8D6'),
                                 child: ListTile(
-                                  leading: Icon(
+                                  leading: const Icon(
                                     Icons.add_a_photo,
                                     color: Colors.white,
                                   ),
-                                  title: Text(
+                                  title: const Text(
                                     "Camera",
                                     style: TextStyle(color: Colors.white),
                                   ),
@@ -119,17 +119,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
-            Text(
+            const Text(
               "Ahmed Essam",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Column(
@@ -137,18 +137,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text('LogOut'),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  leading: const Icon(Icons.person),
+                  title: const Text('LogOut'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    navigateAndFinish(context, LogingScreen());
+                    navigateAndFinish(context, LoginScreen());
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
+                const Padding(
+                  padding: EdgeInsets.all(15.0),
                   child: Text(
                     'General Setting',
                     style: TextStyle(
@@ -159,14 +159,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.notifications),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
@@ -185,22 +185,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 myDivider(),
                 switchState == true
                     ? ListTile(
-                        leading: Icon(Icons.list),
-                        title: Text("Notify Messages"),
+                        leading: const Icon(Icons.list),
+                        title: const Text("Notify Messages"),
                         onTap: () {
-                          navigateto(context, MessageScreen());
+                          navigateto(context, const MessageScreen());
                         },
-                        trailing: Icon(Icons.arrow_forward_ios),
+                        trailing: const Icon(Icons.arrow_forward_ios),
                       )
-                    : SizedBox(height: 0),
+                    : const SizedBox(height: 0),
                 myDivider(),
                 ListTile(
-                  leading: Icon(Icons.task),
-                  title: Text("Privacy and term"),
+                  leading: const Icon(Icons.task),
+                  title: const Text("Privacy and term"),
                   onTap: () {
-                    navigateto(context, PrivacyScreen());
+                    navigateto(context, const PrivacyScreen());
                   },
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: const Icon(Icons.arrow_forward_ios),
                 ),
               ],
             ),
@@ -210,16 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // void imagepacker()async
-  // {
-  // XFile? image = await ImagePicker().pickImage(source:ImageSource.gallery);
-  // if(image!=null)
-  // {
-  //   setState(() {
-  //     file=File(image.path);
-  //   });
-  // }
-  // }
+
 
   Future getImage(ImageSource src) async {
     final takedImage = await picker.getImage(source: src);

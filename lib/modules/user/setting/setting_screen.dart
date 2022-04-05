@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/notification/message_notification.dart';
 import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
-import 'package:furniture_store/modules/user/search/search_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,7 +23,7 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back,color: Colors.white,),
+            icon: const Icon(Icons.arrow_back,color: Colors.white,),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -38,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
               color:  HexColor('#087083'),
               height: 100,
               width: double.infinity,
-              child: Text(
+              child: const Text(
                 "Settings",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -47,21 +45,21 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('LogOut'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              leading: const Icon(Icons.person),
+              title: const Text('LogOut'),
+              trailing: const Icon(Icons.arrow_forward_ios),
               onTap: ()
               {
-               navigateAndFinish(context, LogingScreen());
+               navigateAndFinish(context, LoginScreen());
               },
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
               child: Text('General Setting',
               style: TextStyle(
                 fontSize: 25,
@@ -73,12 +71,12 @@ class _SettingScreenState extends State<SettingScreen> {
             Row(
 
               children: [
-                SizedBox(width: 5,),
+                const SizedBox(width: 5,),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Icon(Icons.notifications),
                 ),
-                SizedBox(width: 10,),
+                const SizedBox(width: 10,),
                 Expanded(
                   child: SwitchListTile(
                     title: const Text("Notification"),
@@ -96,22 +94,22 @@ class _SettingScreenState extends State<SettingScreen> {
             myDivider(),
             switchState == true
                 ? ListTile(
-                    leading: Icon(Icons.list),
-                    title: Text("Notify Messages"),
+                    leading: const Icon(Icons.list),
+                    title: const Text("Notify Messages"),
                     onTap: () {
-                      navigateto(context, MessageScreen());
+                      navigateto(context, const MessageScreen());
                     },
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   )
-                : SizedBox(height: 0),
+                : const SizedBox(height: 0),
             myDivider(),
             ListTile(
-              leading: Icon(Icons.task),
-              title: Text("Privacy and term"),
+              leading: const Icon(Icons.task),
+              title: const Text("Privacy and term"),
               onTap: () {
-                 navigateto(context, PrivacyScreen());
+                 navigateto(context, const PrivacyScreen());
               },
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: const Icon(Icons.arrow_forward_ios),
             ),
 
 
@@ -128,7 +126,7 @@ class _SettingScreenState extends State<SettingScreen> {
         ringWidth: 70.0,
         fabSize: 60.0,
         fabElevation: 8.0,
-        fabIconBorder: CircleBorder(),
+        fabIconBorder: const CircleBorder(),
         children: <Widget>
         [
           RawMaterialButton(
@@ -137,13 +135,13 @@ class _SettingScreenState extends State<SettingScreen> {
               launch('tel:/01097048325');
             },
             elevation: 10.0,
-            child: Icon(
+            child: const Icon(
               Icons.phone,
               size: 45.0,
               color: Colors.white,
             ),
-            padding: EdgeInsets.all(10.0),
-            shape: CircleBorder(),
+            padding: const EdgeInsets.all(10.0),
+            shape: const CircleBorder(),
           ),
           RawMaterialButton(
             onPressed: ()
@@ -151,7 +149,7 @@ class _SettingScreenState extends State<SettingScreen> {
             openwhatsapp();
             },
             elevation: 10.0,
-            child:   Image(
+            child:   const Image(
               image: AssetImage(
                 'image/whatsapp.png',
 
@@ -159,8 +157,8 @@ class _SettingScreenState extends State<SettingScreen> {
               width: 50,
               height: 50,
             ),
-            padding: EdgeInsets.all(10.0),
-            shape: CircleBorder(),
+            padding: const EdgeInsets.all(10.0),
+            shape: const CircleBorder(),
           ),
           RawMaterialButton(
             onPressed: ()
@@ -168,7 +166,7 @@ class _SettingScreenState extends State<SettingScreen> {
               launch("https://www.facebook.com/DreamHouse237/");
             },
             elevation: 10.0,
-            child:Image(
+            child:const Image(
               image: AssetImage(
                 'image/facebook.png',
 
@@ -176,8 +174,8 @@ class _SettingScreenState extends State<SettingScreen> {
               width: 50,
               height: 50,
             ),
-            padding: EdgeInsets.all(10.0),
-            shape: CircleBorder(),
+            padding: const EdgeInsets.all(10.0),
+            shape: const CircleBorder(),
           ),
         ]
     ),

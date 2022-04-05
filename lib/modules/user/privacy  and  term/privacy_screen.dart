@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class PrivacyScreen extends StatelessWidget {
-  PrivacyScreen({Key? key}) : super(key: key);
+  const PrivacyScreen({Key? key}) : super(key: key);
 
 
   @override
@@ -15,8 +15,8 @@ class PrivacyScreen extends StatelessWidget {
         {
           Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),color: Colors.white,),
-        title: Text(
+          icon: const Icon(Icons.arrow_back),color: Colors.white,),
+        title: const Text(
           'Privacy And Terms',
           style: TextStyle(
               color: Colors.white
@@ -25,7 +25,7 @@ class PrivacyScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

@@ -79,7 +79,7 @@ Widget defaultButton({
   child: MaterialButton(onPressed: function,
     child: Text(
       isUppercase ?text.toUpperCase():text,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
       ),
     ),
@@ -107,7 +107,7 @@ Widget defaultButton3({
   child: MaterialButton(onPressed: function,
     child: Text(
       isUppercase ?text.toUpperCase():text,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
       ),
     ),
@@ -199,7 +199,7 @@ Widget defaultButton2({
   child: MaterialButton(onPressed: function,
     child: Text(
       isUppercase ?text.toUpperCase():text,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
       ),
     ),
