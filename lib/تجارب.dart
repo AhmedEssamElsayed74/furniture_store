@@ -219,10 +219,9 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////cartscreen//////
-
+//
 // import 'package:flutter/material.dart';
 // import 'package:furniture_store/shared/component/component.dart';
-//
 //
 //
 // class DetailsScreen extends StatelessWidget {

@@ -21,7 +21,6 @@ class _CartLayoutState extends State<CartLayout> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart',style: TextStyle(color: Colors.white),),
-        backgroundColor: HexColor('#087083'),
       ),
       body:  Padding(
         padding: const EdgeInsets.all(15.0),

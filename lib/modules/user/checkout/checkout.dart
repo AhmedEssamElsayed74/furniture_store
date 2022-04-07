@@ -2,12 +2,8 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
-
 class CheckOutScreen extends StatelessWidget {
   CheckOutScreen({Key? key}) : super(key: key);
-
-
-
 
   var firstnamecontroller = TextEditingController();
 
@@ -20,7 +16,6 @@ class CheckOutScreen extends StatelessWidget {
   var phonecontroller = TextEditingController();
 
   var cardcontroller = TextEditingController();
-
 
   var formkey = GlobalKey<FormState>();
 
@@ -44,7 +39,9 @@ class CheckOutScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   defaultformfield(
                     controller: firstnamecontroller,
                     type: TextInputType.name,
@@ -55,7 +52,8 @@ class CheckOutScreen extends StatelessWidget {
                     },
                     label: 'First Name',
                     prefix: Icons.person,
-                  ),const SizedBox(
+                  ),
+                  const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
@@ -82,7 +80,8 @@ class CheckOutScreen extends StatelessWidget {
                     },
                     label: 'Email Address',
                     prefix: Icons.email_outlined,
-                  ),const SizedBox(
+                  ),
+                  const SizedBox(
                     height: 20.0,
                   ),
                   defaultformfield(
@@ -134,12 +133,43 @@ class CheckOutScreen extends StatelessWidget {
                     condition: true,
                     builder: (context) => Center(
                       child: defaultButton(
-                        function: () {},
+                        function: () {
+                          var alert = AlertDialog(
+                            content: Container(
+                              height: 200,
+                              child: Column(
+                                children: const [
+                                  Image(
+                                    image: AssetImage('image/true.png'),
+                                    width: 80,
+                                    height: 60,
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Text('Success',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  SizedBox(height: 35,),
+                                  Text('waah,you have Successfully',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          );
+                          showDialog(context: context, builder: (context) => alert);
+                        },
                         text: 'Confirm',
                       ),
                     ),
                     fallback: (context) =>
-                        Center(child: const CircularProgressIndicator()),
+                        const Center(child: CircularProgressIndicator()),
                   ),
                 ],
               ),

@@ -26,16 +26,16 @@ class ShopLayout extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      HexColor('#087083'),
-                      HexColor('#087083'),
-                    ],
-                  )
-                ),
-              ),
+              // flexibleSpace: Container(
+              //   decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //       colors: [
+              //         HexColor('#087083'),
+              //         HexColor('#087083'),
+              //       ],
+              //     )
+              //   ),
+              // ),
               title: Text(
                 cubit.titlesScreen[cubit.currentindex],
                 style: const TextStyle(

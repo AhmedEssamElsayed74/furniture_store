@@ -104,7 +104,19 @@ List<String>titlesScreen=
    ];
 
 /////////////////////////////////////////////////////////////////
+  List detailsPicture = [
+    'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163641874-163641874-HC27062021_02-750-1.jpg?v=1',
+    'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163639532-163639532-HC11102021_02-750-1.jpg',
+    'https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg',
 
+  ];
+
+  bool isDark = false;
+  void ChangeAppTheme()
+  {
+    isDark = !isDark;
+      emit(AppChangeDarkTheme());
+    }
 
 
    void ChangeBottom (index)

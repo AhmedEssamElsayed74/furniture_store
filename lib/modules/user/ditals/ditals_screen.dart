@@ -1,4 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:furniture_store/layout/cubit/cubit.dart';
+import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/checkout/checkout.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -13,6 +17,11 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context)
   {
+    return BlocConsumer<ShopCubit, ShopStates>(
+  listener: (context, state) {},
+  builder: (context, state) {
+    var cubit = ShopCubit.get(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -23,11 +32,34 @@ class DetailsScreen extends StatelessWidget {
      body: Column(
        children:
        [
-        Center(
-          child: Container(
-            child: const Image(image: NetworkImage('https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg'),
-              width: 400,
-              height: 200,
+        Container(
+
+        child:  CarouselSlider(
+            items: cubit.detailsPicture
+                .map((image) => Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(image),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                );
+              },
+            ))
+                .toList(),
+            options: CarouselOptions(
+              height: 250.0,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              viewportFraction: 1,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayAnimationDuration: const Duration(seconds: 1),
+              autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+              scrollDirection: Axis.horizontal,
             ),
           ),
         ),
@@ -49,7 +81,7 @@ class DetailsScreen extends StatelessWidget {
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: const [
                        Text(
-                         'Century Club Chair ',
+                         'Galaxy Metal Floor Lamp',
                          maxLines: 1,
                          overflow: TextOverflow.ellipsis,
                          style: TextStyle(
@@ -102,7 +134,7 @@ class DetailsScreen extends StatelessWidget {
                              mainAxisAlignment: MainAxisAlignment.start,
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children:
-                             const [
+                              const [
                                Text(
                                  'About: ',
                                  maxLines: 1,
@@ -111,6 +143,14 @@ class DetailsScreen extends StatelessWidget {
                                    fontSize: 18,
                                    fontWeight:
                                    FontWeight.bold,
+                                 ),
+                               ),
+                               SizedBox(height: 10,),
+                               Text(
+                                 'This contemporary floor lamp is designed to be a convenient option for elegant home settings. It comes with 6 bulbs in a spherical shape, which gives a soothing light that is pleasing to the eyes. Easy to clean with a regular wipe to preserve its appearance as long as possible.',
+                                 style: TextStyle(
+                                   fontSize: 15,
+                                   fontWeight: FontWeight.bold,
                                  ),
                                ),
                              ],
@@ -170,9 +210,12 @@ class DetailsScreen extends StatelessWidget {
        ],
      ),
     );
+  },
+);
   }
 
 }
+
 
 
 

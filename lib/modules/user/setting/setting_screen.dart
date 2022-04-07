@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/notification/message_notification.dart';
 import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
@@ -111,6 +112,17 @@ class _SettingScreenState extends State<SettingScreen> {
               },
               trailing: const Icon(Icons.arrow_forward_ios),
             ),
+            myDivider(),
+            ListTile(
+              title: const Text("Dark Mode"),
+              onTap: () {
+                 ShopCubit.get(context).ChangeAppTheme();
+              },
+              trailing: const Icon(Icons.brightness_4_outlined),
+            ),
+            myDivider(),
+
+
 
 
           ],

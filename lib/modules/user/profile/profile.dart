@@ -58,7 +58,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      // imagepacker();
                       var alert = AlertDialog(
                         title: const Text(
                           'Choose Picture From :',
