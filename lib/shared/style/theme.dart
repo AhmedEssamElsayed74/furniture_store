@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 ThemeData darkTheme=ThemeData(
   primarySwatch: defaultcolor,
+  scaffoldBackgroundColor: HexColor('333739'),
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
     backgroundColor: HexColor('333739'),
@@ -29,21 +30,12 @@ ThemeData darkTheme=ThemeData(
     elevation: 20.0,
     backgroundColor: HexColor('333739'),
   ),
-  textTheme: TextTheme(
-    bodyText1: TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-  ),
-  fontFamily: 'Jannah',
-  scaffoldBackgroundColor: HexColor('333739'),
+
 );
 ThemeData lightTheme=ThemeData(
   primarySwatch: defaultcolor,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme:  AppBarTheme(
-
     titleSpacing: 20.0,
     backgroundColor:  HexColor('#087083'),
     elevation: 0.0,
@@ -68,11 +60,4 @@ ThemeData lightTheme=ThemeData(
     backgroundColor: HexColor('#087083'),
   ),
 
-  textTheme: const TextTheme(
-    bodyText1: TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-  ),
 );

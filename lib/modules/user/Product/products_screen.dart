@@ -21,7 +21,6 @@ class ProductScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit=ShopCubit.get(context);
         return Scaffold(
-          backgroundColor: Colors.white,
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:furniture_store/layout/cubit/cubit.dart';
+import 'package:furniture_store/layout/cubit/states.dart';
+import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/shared/style/bloc_observer.dart';
 import 'package:furniture_store/shared/style/theme.dart';
 import 'modules/user/splash screen/splash_screen.dart';
 
 
-void main()  {
-
-
+void main() {
   BlocOverrides.runZoned(
-    () async {
+        () async {
       WidgetsFlutterBinding.ensureInitialized();
 
 
@@ -26,12 +27,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme,
-        // darkTheme: darkTheme,
-        // themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-        home: SplashScreen(),
-      );
+    return BlocProvider(
+      create: (context) => ShopCubit(),
+      child: BlocConsumer<ShopCubit, ShopStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: ShopCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            home: SplashScreen(),
+          );
+        },
+      ),
+    );
   }
 }
