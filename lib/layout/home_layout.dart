@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
@@ -60,43 +61,23 @@ class ShopLayout extends StatelessWidget {
               ],
             ),
             body: cubit.bottomscreen[cubit.currentindex],
-
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: ShopCubit.get(context).currentindex,
+            bottomNavigationBar: CurvedNavigationBar(
+              index: ShopCubit.get(context).currentindex,
               onTap: (value) => ShopCubit.get(context).ChangeBottom(value),
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  label: 'Home',
-                ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(
-                //     Icons.shopping_cart,
-                //   ),
-                //   label: 'Cart',
-                // ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.linked_camera_outlined,
-                  ),
-                  label: '3D',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.favorite_outline_rounded,
-                  ),
-                  label: 'Favourites',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.person,
-                  ),
-                  label: 'Profile',
-                ),
+              color:  HexColor('#087083'),
+              backgroundColor: Colors.white,
+              animationDuration: const Duration(milliseconds: 300),
+              height: 50,
+              items: const
+              [
+                 Icon(Icons.home,size: 30,color: Colors.white,),
+                 Icon(Icons.linked_camera_outlined,size: 30,color: Colors.white,),
+                 Icon(Icons.favorite_outline_rounded,size: 30,color: Colors.white,),
+                 Icon(Icons.person,size: 30,color: Colors.white,),
               ],
             ),
+
+
             drawer: Drawer(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),

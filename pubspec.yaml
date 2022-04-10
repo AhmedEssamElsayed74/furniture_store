@@ -46,6 +46,7 @@ dependencies:
   lottie: ^1.2.2
   fab_circular_menu: ^1.0.2
   url_launcher: ^6.0.20
+  curved_navigation_bar: ^1.0.3
 
 
 
