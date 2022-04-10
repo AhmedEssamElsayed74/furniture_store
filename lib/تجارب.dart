@@ -538,6 +538,39 @@
 // }
 
 
+///////////////////////////
+
+// bottomNavigationBar: BottomNavigationBar(
+// currentIndex: ShopCubit.get(context).currentindex,
+// onTap: (value) => ShopCubit.get(context).ChangeBottom(value),
+// items: const [
+// BottomNavigationBarItem(
+// icon: Icon(
+// Icons.home,
+// ),
+// label: 'Home',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(
+// Icons.linked_camera_outlined,
+// ),
+// label: '3D',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(
+// Icons.favorite_outline_rounded,
+// ),
+// label: 'Favourites',
+// ),
+// BottomNavigationBarItem(
+// icon: Icon(
+// Icons.person,
+// ),
+// label: 'Profile',
+// ),
+// ],
+
+
 
 
 
