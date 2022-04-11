@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/shared/style/bloc_observer.dart';
 import 'package:furniture_store/shared/style/theme.dart';
 import 'modules/user/splash screen/splash_screen.dart';
@@ -14,8 +13,7 @@ void main() {
       WidgetsFlutterBinding.ensureInitialized();
 
 
-      runApp(MyApp(
-      ));
+      runApp(const MyApp());
     },
     blocObserver: MyBlocObserver(),
   );
@@ -23,7 +21,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
-  MyApp({Key? key, Key}) : super(key: key);
+  const MyApp({Key? key, Key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: ShopCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            home: SplashScreen(),
+            home: const SplashScreen(),
           );
         },
       ),

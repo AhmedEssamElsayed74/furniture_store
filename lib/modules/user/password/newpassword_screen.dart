@@ -7,6 +7,9 @@ class NewPasswordScreen extends StatelessWidget {
   NewPasswordScreen({Key? key}) : super(key: key);
 
   var passwordcontroller = TextEditingController();
+  var newpasswordcontroller = TextEditingController();
+  var formkey = GlobalKey<FormState>();
+
 
 
 
@@ -33,48 +36,64 @@ class NewPasswordScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            defaultformfield(
-              controller: passwordcontroller,
-                type: TextInputType.text,
-                validate: (value)
-                {
-                  if(value.isEmpty)
+        child: Form(
+          key: formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              defaultformfield(
+                controller: passwordcontroller,
+                  type: TextInputType.text,
+                  validate: (value)
                   {
-                    return 'password must not be empty';
-                  }else
+                    if(value.isEmpty)
                     {
-                      return null;
-                    }
-                },
-                label: 'password',
-                prefix: Icons.lock_outline_rounded,
-            ),
-            const SizedBox(height: 20.0,),
-        defaultformfield(
-          controller: passwordcontroller,
-          type: TextInputType.text,
-          validate: (value)
-          {
-            if(value.isEmpty)
+                      return 'password must not be empty';
+                    }else
+                      {
+                        return null;
+                      }
+                  },
+                  label: 'password',
+                  prefix: Icons.lock_outline_rounded,
+              ),
+              const SizedBox(height: 20.0,),
+          defaultformfield(
+            controller: newpasswordcontroller,
+            type: TextInputType.text,
+            validate: (value)
             {
-              return 'password must not be empty';
-            }else
-            {
-              return null;
-            }
-          },
-          label: 'new password',
-          prefix: Icons.lock_outline_rounded,
-        ),
+              if(value.isEmpty)
+              {
+                return 'password must not be empty';
+              }else
+              {
+                return null;
+              }
+            },
+            label: 'new password',
+            prefix: Icons.lock_outline_rounded,
+          ),
 
-            const SizedBox(height: 40.0,),
-            Center(child: defaultButton(function: (){}, text: 'confirm',)),
+              const SizedBox(height: 40.0,),
+              Center(child: defaultButton(function:
+                  ()
+              {
 
-          ],
+                if (formkey.currentState!.validate()) {
+
+                    password: passwordcontroller.text;
+                    newpassword: newpasswordcontroller.text;
+                }
+                navigateAndFinish(context, LoginScreen());
+              },
+                text: 'confirm',
+              ),
+              ),
+
+            ],
+          ),
         ),
       ),
     );

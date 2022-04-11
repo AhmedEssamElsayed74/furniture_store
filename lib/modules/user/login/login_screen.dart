@@ -84,7 +84,6 @@ class LoginScreen extends StatelessWidget {
                           suffix: LogingCubit.get(context).suffix,
                           onSubmit: (value) {
                             if (formkey.currentState!.validate()) {
-                                email: emailcontroller.text;
                                 password: passwordcontroller.text;
                             }
                           },
@@ -162,9 +161,7 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+
                         Center(
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -173,10 +170,10 @@ class LoginScreen extends StatelessWidget {
                               IconButton(
                                 onPressed: () {  },
                                 icon: const Image(
-                                  image: NetworkImage(
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFYlHW5VAtVqztT1KUbXoC6QA0JnQEAPUYsRWSFF_49cflsmLrQLhZp6hwtrDU2XFoLFs&usqp=CAU',
+                                  image: AssetImage(
+                                    'image/face.png',
                                   ),
-                                  width: 24,
+                                  width: 26,
                                 ),
 
                               ),
@@ -184,8 +181,8 @@ class LoginScreen extends StatelessWidget {
                               IconButton(
                                 onPressed: () {  },
                                 icon: const Image(
-                                    image: NetworkImage(
-                                        'https://dailytimes.com.pk/assets/uploads/2022/01/28/unnamed.png',
+                                    image: AssetImage(
+                                        'image/google.png',
                                     ),
                                 ),
                               ),
