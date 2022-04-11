@@ -85,8 +85,9 @@ class NewPasswordScreen extends StatelessWidget {
 
                     password: passwordcontroller.text;
                     newpassword: newpasswordcontroller.text;
+                    navigateAndFinish(context, LoginScreen());
+
                 }
-                navigateAndFinish(context, LoginScreen());
               },
                 text: 'confirm',
               ),
