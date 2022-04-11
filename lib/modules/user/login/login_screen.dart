@@ -117,15 +117,12 @@ class LoginScreen extends StatelessWidget {
                             child: defaultButton(
                               function: () {
                                 if (formkey.currentState!.validate()) {
-                                  // LogingCubit.get(context).UserLogin(
-                                  //   email: emailcontroller.text,
-                                  //   password: passwordcontroller.text,
-                                  // );
+                                  navigateto(
+                                    context,
+                                    const ShopLayout(),
+                                  );
                                 }
-                                navigateto(
-                                  context,
-                                  const ShopLayout(),
-                                );
+
                               },
                               text: 'sign in',
                               isUppercase: true,

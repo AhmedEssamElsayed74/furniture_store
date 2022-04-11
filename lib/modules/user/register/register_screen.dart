@@ -208,10 +208,10 @@ class RegisterScreen extends StatelessWidget {
                                       email: emailcontroller.text;
                                       password: passwordcontroller.text;
                                       phone: phonecontroller.text;
+                                      navigateAndFinish(context, LoginScreen(),);
+
 
                                   }
-                                  navigateAndFinish(context, LoginScreen(),
-                                  );
                                 },
                                 text: 'Register',
                                 isUppercase: true,
