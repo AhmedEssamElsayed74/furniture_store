@@ -47,6 +47,7 @@ dependencies:
   fab_circular_menu: ^1.0.2
   url_launcher: ^6.0.20
   curved_navigation_bar: ^1.0.3
+  flutter_offline: "^2.1.0"
 
 
 
@@ -96,6 +97,8 @@ flutter:
      - image/logo.png
      - image/Capture.png
      - image/true.png
+     - image/face.png
+     - image/google.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
