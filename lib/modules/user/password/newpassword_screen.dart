@@ -83,16 +83,13 @@ class NewPasswordScreen extends StatelessWidget {
 
                 if (formkey.currentState!.validate()) {
 
-                    password: passwordcontroller.text;
-                    newpassword: newpasswordcontroller.text;
-                    navigateAndFinish(context, LoginScreen());
 
+                    navigateAndFinish(context, LoginScreen());
                 }
               },
                 text: 'confirm',
               ),
               ),
-
             ],
           ),
         ),
