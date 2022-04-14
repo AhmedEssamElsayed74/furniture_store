@@ -41,9 +41,9 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Center(
-                            child: Lottie.network(
-                          'https://assets5.lottiefiles.com/packages/lf20_dehufm3f.json',
+                        const Center(
+                            child: Image(
+                              image: AssetImage('image/login.gif',),
                           width: 250,
                           height: 200,
                         ),

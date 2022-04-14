@@ -5,21 +5,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/ditals/ditals_screen.dart';
+import 'package:furniture_store/modules/user/ditals/item_modle.dart';
 import 'package:furniture_store/modules/user/item/item_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
+import 'package:furniture_store/shared/style/color.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        var cubit=ShopCubit.get(context);
+        var cubit = ShopCubit.get(context);
         return Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -91,7 +91,7 @@ class ProductScreen extends StatelessWidget {
                           width: 83,
                           height: 40,
                           child: Card(
-                            elevation: 15,
+                            color: Colors.grey[100],
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -126,339 +126,232 @@ class ProductScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateto(context, const DetailsScreen());
-                    },
-                    child: Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(50.0))),
-                        height: 190,
-                        width: 320,
-                        child: Card(
-                          margin: const EdgeInsetsDirectional.all(5),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 10,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Image(
-                                image: NetworkImage(
-                                    'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163641874-163641874-HC27062021_02-750-1.jpg?v=1'),
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 50,
+                  ListView.separated(
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        navigateto(context, const DetailsScreen());
+                      },
+                      child: Center(
+                        child: Container(
+              decoration: const BoxDecoration(
+                  borderRadius:
+                  BorderRadius.all(Radius.circular(50.0))),
+                   height: 170,
+                    width: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 7),
+                          child: Card(
+                                    margin: const EdgeInsetsDirectional.all(5),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    elevation: 10,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 190,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          '${ShopCubit.get(context).products[index].image}',
+                                        ),
+                                        fit: BoxFit.fill,
+
+                                      )
                                   ),
-                                  Text(
-                                    'Galaxy Metal Floor Lamp',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
+                                ),
+                                const SizedBox(
+                                  width: 5.0,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 5,),
+                                       Text(
+                                        '${cubit.products[index].name}',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          height: 1.1,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15.0,
+                                      ),
+                                       Text(
+                                        '${cubit.products[index].size}'+' cm',
+                                        style: TextStyle(
+                                          color: defaultcolor,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15.0,
+                                      ),
+                                      Row(
+                                        children:  [
+                                          Text(
+                                            '${cubit.products[index].price - (cubit.products[index].price * (cubit.products[index].discount / 100))}'+ " EGP",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 15.0,
+                                          ),
+                                          Text(
+                                            '${cubit.products[index].price}',
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.grey,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 15.0,
+                                      ),
+                                      Row(
+                                        children: [
+                                          RaisedButton(
+                                            onPressed: () {
+                                              showToast(
+                                                  text:
+                                                      " The Item is added to Cart ",
+                                                  state: ToastState.SUCCESS);
+                                            },
+                                            child: const Text(
+                                              'add to cart',
+                                              style:
+                                                  TextStyle(color: Colors.white),
+                                            ),
+                                            color: HexColor('#087083'),
+                                          ),
+                                          const Spacer(),
+                                          IconButton(
+                                            onPressed: () {
+                                              showToast(
+                                                  text:
+                                                      " The Item is added to Favourite ",
+                                                  state: ToastState.SUCCESS);
+                                            },
+                                            icon: const Icon(
+                                              Icons.favorite_outline_rounded,
+                                              size: 25.0,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '50.000 EGP',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 5,),
-                  GestureDetector(
-                    onTap: () {
-                      navigateto(context, const DetailsScreen());
-                    },
-                    child: Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50.0))),
-                        height: 190,
-                        width: 320,
-                        child: Card(
-                          margin: const EdgeInsetsDirectional.all(5),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 10,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Image(
-                                image: NetworkImage(
-                                    'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163639532-163639532-HC11102021_02-750-1.jpg'),
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                  Text(
-                                    'Piece Glass Top Coffee',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '50.000 EGP',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateto(context, const DetailsScreen());
-                    },
-                    child: Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50.0))),
-                        height: 190,
-                        width: 320,
-                        child: Card(
-                          margin: const EdgeInsetsDirectional.all(5),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 10,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Image(
-                                image: NetworkImage(
-                                    'https://target.scene7.com/is/image/Target/GUEST_b0aa50c3-ce9c-4fea-93bf-e6dffb91818b?wid=325&hei=325&qlt=80&fmt=pjpeg'),
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                  Text(
-                                    'Century Club Chair',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '2.000 EGP',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateto(context, const DetailsScreen());
-                    },
-                    child: Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50.0))),
-                        height: 190,
-                        width: 320,
-                        child: Card(
-                          margin: const EdgeInsetsDirectional.all(5),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 10,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Image(
-                                image: NetworkImage(
-                                    'https://i.pinimg.com/736x/c2/03/bb/c203bb64b6d658c34d56e485e7a11224.jpg'),
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                  Text(
-                                    'Home Office Design ',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '14.000 EGP',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigateto(context, const DetailsScreen());
-                    },
-                    child: Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50.0))),
-                        height: 190,
-                        width: 320,
-                        child: Card(
-                          margin: const EdgeInsetsDirectional.all(5),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 10,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Image(
-                                image: NetworkImage(
-                                    'https://i.pinimg.com/564x/31/c3/db/31c3dbc6d38e11a452e902d8775a5aa4.jpg'),
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                  Text(
-                                    'Tapete Sala e Quarto',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    '45.000 EGP',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     navigateto(context, const DetailsScreen());
+                    //   },
+                    //   child: Center(
+                    //     child: Container(
+                    //       decoration: const BoxDecoration(
+                    //           borderRadius:
+                    //           BorderRadius.all(Radius.circular(50.0))),
+                    //       height: 170,
+                    //       width: double.infinity,
+                    //       padding: EdgeInsets.symmetric(horizontal: 7),
+                    //       child: Card(
+                    //         margin: const EdgeInsetsDirectional.all(5),
+                    //         clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //         elevation: 10,
+                    //         child: Row(
+                    //           mainAxisAlignment: MainAxisAlignment.start,
+                    //           crossAxisAlignment: CrossAxisAlignment.center,
+                    //           children: [
+                    //              Image(
+                    //               image: NetworkImage(
+                    //                   '${cubit.products[index].image}'),
+                    //               width: 150,
+                    //               height: 190,
+                    //               fit: BoxFit.fill,
+                    //             ),
+                    //             const SizedBox(
+                    //               width: 5,
+                    //             ),
+                    //             Expanded(
+                    //               child: Column(
+                    //                 mainAxisAlignment: MainAxisAlignment.start,
+                    //                 crossAxisAlignment: CrossAxisAlignment.start,
+                    //                 children:  [
+                    //                   const SizedBox(
+                    //                     height: 10,
+                    //                   ),
+                    //                   Text(
+                    //                   '${cubit.products[index].name}',
+                    //                     maxLines: 2,
+                    //                     overflow: TextOverflow.ellipsis,
+                    //                     style: const TextStyle(
+                    //                         fontSize: 13,
+                    //                         fontWeight: FontWeight.bold
+                    //                     ),
+                    //                   ),
+                    //                   const SizedBox(
+                    //                     height: 20,
+                    //                   ),
+                    //                    Text(
+                    //                     ' ${cubit.products[index].size}'+" cm",
+                    //                     style: TextStyle(
+                    //                       color: Colors.blue,
+                    //                     ),
+                    //                   ),
+                    //                   const SizedBox(
+                    //                     height: 20,
+                    //                   ),
+                    //                  Row(
+                    //                    children:
+                    //                    [
+                    //                      Text(
+                    //                        '${cubit.products[index].price - (cubit.products[index].price * (cubit.products[index].discount / 100))}'+ " EGP",
+                    //                        style: const TextStyle(
+                    //                            color: Colors.black,
+                    //                        ),
+                    //                      ),
+                    //
+                    //                      SizedBox(
+                    //                        width: 15,
+                    //                      ),
+                    //
+                    //                      Text(
+                    //                        '${cubit.products[index].price}',
+                    //                        style: const TextStyle(
+                    //                            color: Colors.grey,
+                    //                          decoration: TextDecoration.lineThrough,
+                    //                        ),
+                    //                      ),
+                    //
+                    //
+                    //                    ],
+                    //                  )
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    separatorBuilder: (context, index) => SizedBox(height: 10),
+                    itemCount: cubit.products.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                  )
                 ],
               ),
             ),

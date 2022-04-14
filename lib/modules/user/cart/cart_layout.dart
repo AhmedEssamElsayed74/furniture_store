@@ -20,6 +20,18 @@ class _CartLayoutState extends State<CartLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  HexColor('#087083'),
+                  HexColor('#5AB5C6'),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              )
+          ),
+        ),
         title: const Text('Cart',style: TextStyle(color: Colors.white),),
       ),
       body:  Padding(

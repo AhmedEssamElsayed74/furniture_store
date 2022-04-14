@@ -47,9 +47,9 @@ class RegisterScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          Center(
-                            child: Lottie.network(
-                              'https://assets6.lottiefiles.com/packages/lf20_u8o7BL.json',
+                          const Center(
+                            child:Image(
+                              image: AssetImage('image/register.gif'),
                               width: 180,
                               height: 180,
                             ),
