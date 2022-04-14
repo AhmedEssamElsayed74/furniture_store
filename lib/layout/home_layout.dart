@@ -27,16 +27,18 @@ class ShopLayout extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              // flexibleSpace: Container(
-              //   decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //       colors: [
-              //         HexColor('#087083'),
-              //         HexColor('#087083'),
-              //       ],
-              //     )
-              //   ),
-              // ),
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      HexColor('#087083'),
+                      HexColor('#5AB5C6'),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  )
+                ),
+              ),
               title: Text(
                 cubit.titlesScreen[cubit.currentindex],
                 style: const TextStyle(
@@ -67,7 +69,7 @@ class ShopLayout extends StatelessWidget {
               color:  HexColor('#087083'),
               backgroundColor: Colors.white,
               animationDuration: const Duration(milliseconds: 300),
-              height: 50,
+              height: 55,
               items: const
               [
                  Icon(Icons.home,size: 30,color: Colors.white,),
