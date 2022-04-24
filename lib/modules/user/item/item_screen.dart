@@ -76,7 +76,7 @@ Widget buildListProductItem(context,index) =>
               BorderRadius.all(Radius.circular(50.0))),
           height: 170,
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 7,vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 7,vertical: 5),
           child: Card(
             margin: const EdgeInsetsDirectional.all(5),
             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -105,12 +105,12 @@ Widget buildListProductItem(context,index) =>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Text(
                         '${ShopCubit.get(context).products[index].name}',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           height: 1.1,
                         ),
                       ),
@@ -119,7 +119,7 @@ Widget buildListProductItem(context,index) =>
                       ),
                       Text(
                         '${ShopCubit.get(context).products[index].size}' + ' cm',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: defaultcolor,
                         ),
                       ),
@@ -132,16 +132,16 @@ Widget buildListProductItem(context,index) =>
                             '${ShopCubit.get(context).products[index].price - (ShopCubit.get(context)
                                 .products[index].price * (ShopCubit.get(context).products[index]
                                 .discount / 100))}' + " EGP",
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 15.0,
                           ),
                           Text(
                             '${ShopCubit.get(context).products[index].price}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15.0,
                               color: Colors.grey,
                               decoration:

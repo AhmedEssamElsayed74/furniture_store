@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:furniture_store/layout/cubit/cubit.dart';
+import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/checkout/checkout.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:furniture_store/shared/style/color.dart';
@@ -12,12 +15,13 @@ class CartLayout extends StatefulWidget {
 }
 
 class _CartLayoutState extends State<CartLayout> {
-  var Itemnum = [5, 2];
-
-  int totalprice = 0;
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<ShopCubit, ShopStates>(
+     listener: (context, state) {},
+  builder: (context, state) {
+    var cubit = ShopCubit.get(context);
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -34,60 +38,92 @@ class _CartLayoutState extends State<CartLayout> {
         ),
         title: const Text('Cart',style: TextStyle(color: Colors.white),),
       ),
-      body:  Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => Container(
-                  height: 200,
+      body:  Column(
+        children: [
+          Expanded(
+            child:  ListView.separated(
+
+              itemBuilder: (context, index) => Center(
+                child: Container(
+                  decoration: const BoxDecoration(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(50.0))),
+                  height: 170,
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
                   child: Card(
+                    margin: const EdgeInsetsDirectional.all(5),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     elevation: 10,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Image(
-                          image: NetworkImage(
-                            'https://75324b7afe1a238e9728-48cce035978395103897a6b442a94265.lmsin.net/163641874-163641874-HC27062021_02-750-1.jpg?v=1',
-                          ),
+                        Container(
+                          height: 190,
                           width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  '${ShopCubit.get(context).products[index].image}',
+                                ),
+                                fit: BoxFit.fill,
+
+                              )
+                          ),
                         ),
                         const SizedBox(
-                          width: 15,
+                          width: 5.0,
                         ),
                         Expanded(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              const Text(
-                                'Galaxy Metal Floor Lamp ',
+                              const SizedBox(height: 5,),
+                              Text(
+                                '${cubit.products[index].name}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   height: 1.1,
                                 ),
                               ),
                               const SizedBox(
-                                height: 20.0,
+                                height: 15.0,
                               ),
-                              const Text(
-                                '25x96x100 cm',
-                                style: TextStyle(
+                              Text(
+                                '${cubit.products[index].size}'+' cm',
+                                style: const TextStyle(
                                   color: defaultcolor,
-                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                               const SizedBox(
-                                height: 15,
+                                height: 15.0,
+                              ),
+                              Row(
+                                children:  [
+                                  Text(
+                                    '${cubit.products[index].price - (cubit.products[index].price * (cubit.products[index].discount / 100))}'+ " EGP",
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 15.0,
+                                  ),
+                                  Text(
+                                    '${cubit.products[index].price}',
+                                    style: const TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.grey,
+                                      decoration:
+                                      TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 15.0,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +133,7 @@ class _CartLayoutState extends State<CartLayout> {
                                     padding: EdgeInsets.zero,
                                     onPressed: () {
                                       setState(() {
-                                        Itemnum[0]++;
+                                        cubit.Itemnum[0]++;
                                       });
                                     },
                                     icon: const Icon(
@@ -105,13 +141,13 @@ class _CartLayoutState extends State<CartLayout> {
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  Text('${Itemnum[0]}'),
+                                  Text('${cubit.Itemnum[0]}'),
                                   IconButton(
                                     padding: EdgeInsets.zero,
                                     onPressed: () {
                                       setState(() {
-                                        if (Itemnum[0] > 1) {
-                                          Itemnum[0]--;
+                                        if (cubit.Itemnum[0] > 1) {
+                                          cubit.Itemnum[0]--;
                                         } else {}
                                       });
                                     },
@@ -187,45 +223,48 @@ class _CartLayoutState extends State<CartLayout> {
                     ),
                   ),
                 ),
-                separatorBuilder: (context, index) => const SizedBox(height: 20),
-                itemCount: 10,
-                shrinkWrap: true,
               ),
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              itemCount: cubit.products.length,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics()
             ),
-            Card(
-              elevation: 20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        'Total Price ' +
-                            (totalprice + Itemnum[0] * 2000).toString(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+          ),
+          Card(
+            elevation: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      'Total Price ' +
+                          (cubit.totalprice + cubit.Itemnum[0] * 2000).toString(),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
                     ),
                   ),
-                  MaterialButton(
-                    onPressed: () {navigateto(context, CheckOutScreen());},
-                    child: const Text('checkout',style: TextStyle(color: Colors.white),),
-                    color: HexColor('#087083'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                ),
+                MaterialButton(
+                  onPressed: () {navigateto(context, CheckOutScreen());},
+                  child: const Text('checkout',style: TextStyle(color: Colors.white),),
+                  color: HexColor('#087083'),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  },
+);
   }
 }

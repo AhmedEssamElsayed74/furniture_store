@@ -23,6 +23,10 @@ class ShopCubit extends Cubit<ShopStates> {
     const ProfileScreen(),
   ];
 
+  var Itemnum = [5, 2];
+
+  int totalprice = 0;
+
   List<String> titlesScreen = [
     'Home',
     '3D',
