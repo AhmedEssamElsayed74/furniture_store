@@ -138,7 +138,7 @@ class ProductScreen extends StatelessWidget {
                   BorderRadius.all(Radius.circular(50.0))),
                    height: 170,
                     width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
                           child: Card(
                                     margin: const EdgeInsetsDirectional.all(5),
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -167,12 +167,12 @@ class ProductScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      SizedBox(height: 5,),
+                                      const SizedBox(height: 5,),
                                        Text(
                                         '${cubit.products[index].name}',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           height: 1.1,
                                         ),
                                       ),
@@ -181,7 +181,7 @@ class ProductScreen extends StatelessWidget {
                                       ),
                                        Text(
                                         '${cubit.products[index].size}'+' cm',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: defaultcolor,
                                         ),
                                       ),
@@ -192,16 +192,16 @@ class ProductScreen extends StatelessWidget {
                                         children:  [
                                           Text(
                                             '${cubit.products[index].price - (cubit.products[index].price * (cubit.products[index].discount / 100))}'+ " EGP",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.black,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 15.0,
                                           ),
                                           Text(
                                             '${cubit.products[index].price}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 15.0,
                                               color: Colors.grey,
                                               decoration:
