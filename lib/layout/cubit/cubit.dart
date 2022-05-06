@@ -27,6 +27,17 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int totalprice = 0;
 
+  // IconData favourites = Icons.favorite_outlined;
+  // bool isfavourites = false;
+  //
+  // void changefavourit()
+  // {
+  //   isfavourites=!isfavourites;
+  //   favourites = isfavourites? Icons.favorite_outlined : Icons.favorite_outline_rounded;
+  //   emit(changefavourite());
+  // }
+
+
   List<String> titlesScreen = [
     'Home',
     '3D',

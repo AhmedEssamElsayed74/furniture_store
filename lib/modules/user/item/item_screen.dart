@@ -176,15 +176,12 @@ Widget buildListProductItem(context,index) =>
                           const Spacer(),
                           IconButton(
                             onPressed: () {
-                              showToast(
-                                  text:
-                                  " The Item is added to Favourite ",
-                                  state: ToastState.SUCCESS);
+                              showToast(text: " The Item is added to Favourite ", state: ToastState.SUCCESS);
+                              // ShopCubit.get(context).changefavourit();
                             },
                             icon: const Icon(
                               Icons.favorite_outline_rounded,
-                              size: 25.0,
-                              color: Colors.black,
+
                             ),
                           ),
                         ],

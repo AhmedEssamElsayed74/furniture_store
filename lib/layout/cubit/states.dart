@@ -41,9 +41,10 @@ class ShopSuccessUpdateUserDataState extends ShopStates {}
 class ShopErrorUpdateUserDataState extends ShopStates{}
 
 class ShopLoadingUpdateUserDataState extends ShopStates{}
+
 class AppChangeDarkTheme extends ShopStates{}
 
-
+class changefavourite extends ShopStates{}
 
 
 
