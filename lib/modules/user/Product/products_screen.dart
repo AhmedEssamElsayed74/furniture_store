@@ -82,6 +82,7 @@ class ProductScreen extends StatelessWidget {
                             context,
                             ItemScreen(cubit.categoriesItems[index]),
                           );
+                          print(index);
                         },
                         child: Container(
                           decoration: const BoxDecoration(
@@ -233,8 +234,7 @@ class ProductScreen extends StatelessWidget {
                                           IconButton(
                                             onPressed: () {
                                               showToast(
-                                                  text:
-                                                      " The Item is added to Favourite ",
+                                                  text: " The Item is added to Favourite ",
                                                   state: ToastState.SUCCESS);
                                             },
                                             icon: const Icon(
