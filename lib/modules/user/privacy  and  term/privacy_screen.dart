@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
+import 'package:furniture_store/shared/component/component.dart';
 
 
 
 class PrivacyScreen extends StatelessWidget {
   const PrivacyScreen({Key? key}) : super(key: key);
 
-
-  @override
-  Widget build(BuildContext context)
+  Widget BuildPrivacy(context)
   {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: ()
         {
           Navigator.pop(context);
-          },
+        },
           icon: const Icon(Icons.arrow_back),color: Colors.white,),
         title: const Text(
           'Privacy And Terms',
@@ -64,6 +64,31 @@ class PrivacyScreen extends StatelessWidget {
       ),
     );
 
+  }
+
+  @override
+  Widget build(BuildContext context)
+  {
+    return Scaffold(
+
+        body:
+        OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildPrivacy(context);
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
+    );
   }
 
 }

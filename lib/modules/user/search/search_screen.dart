@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/shared/component/component.dart';
@@ -11,8 +12,8 @@ class SearchScreen extends StatelessWidget {
   var searchcontroller = TextEditingController();
   var formkey = GlobalKey<FormState>();
 
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildSearch()
+  {
     return BlocProvider(create: (context) => ShopCubit(),
       child: BlocConsumer<ShopCubit, ShopStates>(
         listener: (context, state) {},
@@ -53,6 +54,29 @@ class SearchScreen extends StatelessWidget {
         },
       ),
     );
+
   }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+        body:
+        OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildSearch();
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
+    );  }
 
 }

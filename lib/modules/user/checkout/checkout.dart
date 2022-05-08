@@ -1,5 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -19,8 +20,8 @@ class CheckOutScreen extends StatelessWidget {
 
   var formkey = GlobalKey<FormState>();
 
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildCheckout()
+  {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -169,7 +170,7 @@ class CheckOutScreen extends StatelessWidget {
                       ),
                     ),
                     fallback: (context) =>
-                        const Center(child: CircularProgressIndicator()),
+                    const Center(child: CircularProgressIndicator()),
                   ),
                 ],
               ),
@@ -178,5 +179,29 @@ class CheckOutScreen extends StatelessWidget {
         ),
       ),
     );
+
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+        body:
+        OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildCheckout();
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
+    );  }
 }
