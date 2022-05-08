@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/modules/user/login/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/cubit/states.dart';
@@ -16,8 +17,7 @@ class LoginScreen extends StatelessWidget {
   var passwordcontroller = TextEditingController();
   var formkey = GlobalKey<FormState>();
 
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildLogin(){
     return BlocProvider(
       create: (context) => LogingCubit(),
       child: BlocConsumer<LogingCubit, Logingstates>(
@@ -42,11 +42,11 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Center(
-                            child: Image(
-                              image: AssetImage('image/login.gif',),
-                          width: 250,
-                          height: 200,
-                        ),
+                          child: Image(
+                            image: AssetImage('image/login.gif',),
+                            width: 250,
+                            height: 200,
+                          ),
                         ),
                         const SizedBox(
                           height: 15.0,
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                           suffix: LogingCubit.get(context).suffix,
                           onSubmit: (value) {
                             if (formkey.currentState!.validate()) {
-                                password: passwordcontroller.text;
+                              password: passwordcontroller.text;
                             }
                           },
                           suffixPressed: (value) {
@@ -129,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                           fallback: (context) =>
-                              const Center(child: CircularProgressIndicator()),
+                          const Center(child: CircularProgressIndicator()),
                         ),
                         const SizedBox(
                           height: 15,
@@ -178,9 +178,9 @@ class LoginScreen extends StatelessWidget {
                               IconButton(
                                 onPressed: () {  },
                                 icon: const Image(
-                                    image: AssetImage(
-                                        'image/google.png',
-                                    ),
+                                  image: AssetImage(
+                                    'image/google.png',
+                                  ),
                                 ),
                               ),
 
@@ -211,6 +211,28 @@ class LoginScreen extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: OfflineBuilder(
+          connectivityBuilder: (
+              BuildContext context,
+              ConnectivityResult connectivity,
+              Widget child,
+              ) {
+            final bool connected = connectivity != ConnectivityResult.none;
+            if(connected){
+              return BuildLogin();
+            }else
+            {
+              return BuildNoInternetWidget();
+            }
+          },
+          child: const Center(child: CircularProgressIndicator(),),
       ),
     );
   }

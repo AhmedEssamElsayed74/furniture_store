@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -213,6 +214,29 @@ Widget defaultButton2({
 );
 
 
+  Widget BuildNoInternetWidget()
+  {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20,),
+            const Text(
+                "Please check your internet....",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            Image.asset("image/no_internet.png"),
+          ],
+        ),
+      ),
+    );
+  }
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/ditals/ditals_screen.dart';
@@ -14,9 +15,8 @@ class ItemScreen extends StatelessWidget {
 
   const ItemScreen(this.title);
 
-
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildItem()
+  {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -58,6 +58,31 @@ class ItemScreen extends StatelessWidget {
         );
       },
     );
+
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       body: OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildItem();
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
+    );
+
   }
 
 }

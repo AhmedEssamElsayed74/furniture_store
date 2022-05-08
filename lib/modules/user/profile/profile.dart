@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/notification/message_notification.dart';
 import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
@@ -8,20 +9,19 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+   const ProfileScreen({Key? key}) : super(key: key);
+ 
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  //dynamic file;
   bool switchState = false;
   File? _image;
   final picker = ImagePicker();
-
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildProfile(context)
+  {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Center(
@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 160,
                     width: 160,
                     decoration: const BoxDecoration(
-                      shape: BoxShape.circle
+                        shape: BoxShape.circle
                     ),
                     child: _image == null
                         ? Image.network(
@@ -110,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         contentPadding:
-                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                        const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                       );
                       showDialog(context: context, builder: (context) => alert);
                     },
@@ -184,13 +184,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 myDivider(),
                 switchState == true
                     ? ListTile(
-                        leading: const Icon(Icons.list),
-                        title: const Text("Notify Messages"),
-                        onTap: () {
-                          navigateto(context, const MessageScreen());
-                        },
-                        trailing: const Icon(Icons.arrow_forward_ios),
-                      )
+                  leading: const Icon(Icons.list),
+                  title: const Text("Notify Messages"),
+                  onTap: () {
+                    navigateto(context, const MessageScreen());
+                  },
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                )
                     : const SizedBox(height: 0),
                 myDivider(),
                 ListTile(
@@ -207,10 +207,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+
   }
-
-
-
   Future getImage(ImageSource src) async {
     final takedImage = await picker.getImage(source: src);
 
@@ -220,4 +218,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
       }
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+        body:
+        OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildProfile(context);
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
+    );
+  }
+
+
+
 }

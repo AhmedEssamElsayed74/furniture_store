@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/notification/message_notification.dart';
@@ -19,8 +20,8 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   bool switchState = false;
 
-  @override
-  Widget build(BuildContext context) {
+  Widget BuildSetting()
+  {
     return Scaffold(
       appBar: AppBar(
 
@@ -102,13 +103,13 @@ class _SettingScreenState extends State<SettingScreen> {
           myDivider(),
           switchState == true
               ? ListTile(
-                  leading: const Icon(Icons.list),
-                  title: const Text("Notify Messages"),
-                  onTap: () {
-                    navigateto(context, const MessageScreen());
-                  },
-                  trailing: const Icon(Icons.arrow_forward_ios),
-                )
+            leading: const Icon(Icons.list),
+            title: const Text("Notify Messages"),
+            onTap: () {
+              navigateto(context, const MessageScreen());
+            },
+            trailing: const Icon(Icons.arrow_forward_ios),
+          )
               : const SizedBox(height: 0),
           myDivider(),
           ListTile(
@@ -201,6 +202,31 @@ class _SettingScreenState extends State<SettingScreen> {
               shape: const CircleBorder(),
             ),
           ]),
+    );
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+        body:
+        OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+                ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if(connected){
+                return BuildSetting();
+              }else
+              {
+                return BuildNoInternetWidget();
+              }
+            },
+            child: const Center(child: CircularProgressIndicator(),)
+        )
     );
   }
 
