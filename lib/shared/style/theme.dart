@@ -11,8 +11,9 @@ ThemeData darkTheme=ThemeData(
     backgroundColor: HexColor('333739'),
     elevation: 0.0,
     systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: HexColor('333739'),
-      statusBarIconBrightness: Brightness.light,
+      statusBarColor: HexColor('#087083'),
+
+    statusBarIconBrightness: Brightness.light,
     ),
     titleTextStyle: TextStyle(
       color: Colors.white,

@@ -49,6 +49,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   flutter_zoom_drawer: ^3.0.1
   flutter_offline: ^2.1.0
+  connectivity_plus:
 
 
 

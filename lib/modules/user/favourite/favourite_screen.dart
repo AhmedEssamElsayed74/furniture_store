@@ -171,7 +171,6 @@ Widget buildListProductItem(context,index) =>
                             padding:EdgeInsets.zero ,
                             color: HexColor('#087083'),
                             highlightColor: Colors.teal,
-                            splashColor:Colors.yellow ,
                           ),
                           const Spacer(),
                           IconButton(
