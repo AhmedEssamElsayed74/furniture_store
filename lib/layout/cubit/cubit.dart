@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/modules/user/3d/3D.dart';
+import 'package:furniture_store/modules/user/3d/ar_screen.dart';
 import 'package:furniture_store/modules/user/Product/products_screen.dart';
 import 'package:furniture_store/modules/user/ditals/item_modle.dart';
 import 'package:furniture_store/modules/user/favourite/favourite_screen.dart';
@@ -149,6 +149,18 @@ class ShopCubit extends Cubit<ShopStates> {
   void ChangeIndex(ind) {
     index = ind == 0 ? 1 : 0;
     emit(ShopBottomNavbarState());
+  }
+
+  void changeItemnum()
+  {
+    Itemnum[0]++;
+    emit(changeItemnumadd());
+  }
+
+  void changeItemnum2()
+  {
+    Itemnum[0]--;
+    emit(changeItemnumremove());
   }
 
 // void ChangeIndex2 (ind)

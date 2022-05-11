@@ -24,7 +24,6 @@ class ArScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         body:
         OfflineBuilder(
             connectivityBuilder: (

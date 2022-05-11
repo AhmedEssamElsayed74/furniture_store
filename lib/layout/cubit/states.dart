@@ -46,6 +46,10 @@ class AppChangeDarkTheme extends ShopStates{}
 
 class changefavourite extends ShopStates{}
 
+class changeItemnumadd extends ShopStates{}
+
+class changeItemnumremove extends ShopStates{}
+
 
 
 
