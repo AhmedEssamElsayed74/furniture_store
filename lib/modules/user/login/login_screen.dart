@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/modules/user/login/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/cubit/states.dart';
+import 'package:furniture_store/modules/user/password/email_screen.dart';
 import 'package:furniture_store/modules/user/password/newpassword_screen.dart';
 import 'package:furniture_store/modules/user/register/register_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
@@ -72,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                           type: TextInputType.emailAddress,
                           validate: (value) {
                             if (value.isEmpty) {
-                              return 'email must not be empty';
+                              return 'email must not be Empty';
                             }
                           },
                           label: 'Email Address',
@@ -95,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           validate: (value) {
                             if (value.isEmpty) {
-                              return 'password must not be empty';
+                              return 'password must not be Empty';
                             }
                           },
                           isPassword: LogingCubit.get(context).isPassword,
@@ -107,9 +108,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         defaultTextButton(
                           function: () {
-                            navigateto(
-                              context,
-                              NewPasswordScreen(),
+                            navigateto(context, EmailScreen(),
                             );
                           },
                           text: 'Forget Password ?',

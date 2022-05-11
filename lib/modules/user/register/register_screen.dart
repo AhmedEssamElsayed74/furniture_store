@@ -73,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
                             type: TextInputType.name,
                             validate: (value) {
                               if (value.isEmpty) {
-                                return 'name must not be empty';
+                                return 'name must not be Empty';
                               }
                             },
                             label: 'User Name',
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                             type: TextInputType.emailAddress,
                             validate: (value) {
                               if (value.isEmpty) {
-                                return 'email must not be empty';
+                                return 'email must not be Empty';
                               }
                             },
                             label: 'Email Address',
@@ -106,7 +106,7 @@ class RegisterScreen extends StatelessWidget {
                             },
                             validate: (value) {
                               if (value.isEmpty) {
-                                return 'password must not be empity';
+                                return 'password must not be Empty';
                               }
                             },
                             isPassword: RegisterCubit.get(context).isPassword,
@@ -121,7 +121,7 @@ class RegisterScreen extends StatelessWidget {
                             type: TextInputType.phone,
                             validate: (value) {
                               if (value.isEmpty) {
-                                return 'phone must not be empty';
+                                return 'phone must not be Empty';
                               }
                             },
                             label: 'phone',
@@ -137,17 +137,21 @@ class RegisterScreen extends StatelessWidget {
                             children:
                             [
                               Checkbox(value: cubit.privacy,
+
                                 onChanged: (value)
                                 {
                                   cubit.changeprivacy();
                                 },
+
                               ),
                               const SizedBox(width: 2,),
                               const Text("I agree with"),
                               TextButton(onPressed: (){
                                 navigateto(context, const PrivacyScreen());
-                              }, child: const Text("Privacy and Terms"))
+                              }, child: const Text("Privacy and Terms")),
+
                             ],
+
                           ),
                           const SizedBox(
                             height: 10.0,
@@ -200,27 +204,38 @@ class RegisterScreen extends StatelessWidget {
                             builder: (context) => Center(
                               child: defaultButton(
                                 function: ()async {
-                                  if (formkey.currentState!.validate()) {
-                                    name:namecontroller.text;
-                                    email: emailcontroller.text;
-                                    password: passwordcontroller.text;
-                                    phone: phonecontroller.text;
-                                    navigateAndFinish(context, LoginScreen(),);
 
-
-                                  }
                                   result = await connectivity.checkConnectivity();
                                   if(result==ConnectivityResult.mobile)
                                   {
+                                     if (formkey.currentState!.validate())
+                                     {
+                                       if(cubit.privacy==true) {
+                                         navigateAndFinish(context, LoginScreen(),);
+                                       }
+                                  }
+
 
                                   }else if (result==ConnectivityResult.wifi)
                                   {
+                                    if (formkey.currentState!.validate())
+                                    {
+                                      if(cubit.privacy==true) {
+                                        navigateAndFinish(context, LoginScreen(),);
+                                      }else
+                                      {
+                                        showToast(text: "must agree to privacy and terms", state: ToastState.ERROR);
+                                      }
+                                    }
+
 
                                   }else
                                   {
                                     showToast(text: "Please check your connection", state: ToastState.ERROR);
 
                                   }
+
+
                                 },
                                 text: 'Register',
                                 isUppercase: true,
