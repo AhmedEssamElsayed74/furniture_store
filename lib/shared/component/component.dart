@@ -224,11 +224,15 @@ Widget defaultButton2({
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20,),
-            const Text(
-                "Please check your internet....",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold
+            const Padding(
+              padding: EdgeInsets.all(9.0),
+              child: Text(
+                  "No internet connection, please check your connection and try again",
+                maxLines: 2,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             ),
             Image.asset("image/no_internet.png"),

@@ -1,14 +1,13 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/home_layout.dart';
 import 'package:furniture_store/modules/user/login/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/cubit/states.dart';
 import 'package:furniture_store/modules/user/password/newpassword_screen.dart';
 import 'package:furniture_store/modules/user/register/register_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
-import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -17,7 +16,11 @@ class LoginScreen extends StatelessWidget {
   var passwordcontroller = TextEditingController();
   var formkey = GlobalKey<FormState>();
 
-  Widget BuildLogin(){
+  ConnectivityResult result = ConnectivityResult.none;
+  Connectivity connectivity = Connectivity();
+
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LogingCubit(),
       child: BlocConsumer<LogingCubit, Logingstates>(
@@ -92,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           validate: (value) {
                             if (value.isEmpty) {
-                              return 'password must not be empity';
+                              return 'password must not be empty';
                             }
                           },
                           isPassword: LogingCubit.get(context).isPassword,
@@ -115,12 +118,27 @@ class LoginScreen extends StatelessWidget {
                           condition: state is! LogingLoadingstate,
                           builder: (context) => Center(
                             child: defaultButton(
-                              function: () {
-                                if (formkey.currentState!.validate()) {
-                                  navigateto(
-                                    context,
-                                    const ShopLayout(),
-                                  );
+                              function: ()async  {
+
+                             result = await connectivity.checkConnectivity();
+                                if(result==ConnectivityResult.mobile)
+                                {
+                                  if (formkey.currentState!.validate()) {
+                                    navigateto(context, const ShopLayout(),
+                                    );
+                                  }
+
+                                }else if (result==ConnectivityResult.wifi)
+                                {
+                                  if (formkey.currentState!.validate()) {
+                                    navigateto(context, const ShopLayout(),
+                                    );
+                                  }
+
+                                }else
+                                {
+                                  showToast(text: "Please check your connection", state: ToastState.ERROR);
+
                                 }
 
                               },
@@ -165,7 +183,21 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               IconButton(
-                                onPressed: () {  },
+                                onPressed: () async
+                                {
+                                  result = await connectivity.checkConnectivity();
+                                  if(result==ConnectivityResult.mobile)
+                                  {
+
+                                  }else if (result==ConnectivityResult.wifi)
+                                  {
+
+                                  }else
+                                  {
+                                    showToast(text: "Please check your connection", state: ToastState.ERROR);
+
+                                  }
+                                },
                                 icon: const Image(
                                   image: AssetImage(
                                     'image/face.png',
@@ -176,7 +208,21 @@ class LoginScreen extends StatelessWidget {
                               ),
 
                               IconButton(
-                                onPressed: () {  },
+                                onPressed:() async
+                                {
+                                  result = await connectivity.checkConnectivity();
+                                  if(result==ConnectivityResult.mobile)
+                                  {
+
+                                  }else if (result==ConnectivityResult.wifi)
+                                  {
+
+                                  }else
+                                  {
+                                    showToast(text: "Please check your connection", state: ToastState.ERROR);
+
+                                  }
+                                },
                                 icon: const Image(
                                   image: AssetImage(
                                     'image/google.png',
@@ -211,28 +257,6 @@ class LoginScreen extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: OfflineBuilder(
-          connectivityBuilder: (
-              BuildContext context,
-              ConnectivityResult connectivity,
-              Widget child,
-              ) {
-            final bool connected = connectivity != ConnectivityResult.none;
-            if(connected){
-              return BuildLogin();
-            }else
-            {
-              return BuildNoInternetWidget();
-            }
-          },
-          child: const Center(child: CircularProgressIndicator(),),
       ),
     );
   }
