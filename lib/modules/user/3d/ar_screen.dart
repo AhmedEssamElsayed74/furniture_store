@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
+import 'package:furniture_store/modules/user/requests/product_request.dart';
+import 'package:furniture_store/modules/user/setting/setting_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
 
@@ -14,7 +16,9 @@ class ArScreen extends StatelessWidget {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Container(
+        return Scaffold(
+          body:  Center(child: defaultButton3(width: 60, function: (){navigateto(context, ProductRequest());}, text: 'Go')),
+
         );
       },
     );

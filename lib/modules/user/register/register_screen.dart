@@ -15,8 +15,9 @@ class RegisterScreen extends StatelessWidget {
 
   var namecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
-  var passwordcontroller = TextEditingController();
   var phonecontroller = TextEditingController();
+  var passwordcontroller = TextEditingController();
+
   var formkey = GlobalKey<FormState>();
 
   ConnectivityResult result = ConnectivityResult.none;
