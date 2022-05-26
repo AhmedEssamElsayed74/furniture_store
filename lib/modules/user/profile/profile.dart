@@ -41,8 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shape: BoxShape.circle
                     ),
                     child: _image == null
-                        ? Image.network(
-                        'https://lh3.googleusercontent.com/a-/AOh14GiGr_YvomQQej7O84BvUYtq53CLn53Sz07sQEv91w=s360-p-rw-no')
+                        ? Image.asset(
+                        'image/profile.png')
                         : Image.file(
                       _image!,
                       fit: BoxFit.cover,
@@ -51,7 +51,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
 
                 CircleAvatar(
-                  backgroundColor: HexColor('#13B8D6'),
+                  backgroundColor:Colors.black,
+
                   child: IconButton(
                     icon: const Icon(
                       Icons.camera_alt,
@@ -201,6 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   trailing: const Icon(Icons.arrow_forward_ios),
                 ),
+
               ],
             ),
           ],

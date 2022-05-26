@@ -9,6 +9,7 @@ import 'package:furniture_store/layout/cubit/states.dart';
 import 'package:furniture_store/modules/user/cart/cart_layout.dart';
 import 'package:furniture_store/modules/user/item/item_screen.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
+import 'package:furniture_store/modules/user/profile/editprofile_screen.dart';
 import 'package:furniture_store/modules/user/setting/setting_screen.dart';
 import 'package:furniture_store/modules/user/search/search_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
@@ -36,77 +37,12 @@ class ShopLayout extends StatelessWidget {
               showShadow: true,
               menuBackgroundColor:  HexColor('#087083'),
             );
-          //   Scaffold(
-          //   appBar: AppBar(
-          //     flexibleSpace: Container(
-          //       decoration: BoxDecoration(
-          //         gradient: LinearGradient(
-          //           colors: [
-          //             HexColor('#087083'),
-          //             HexColor('#5AB5C6'),
-          //           ],
-          //           begin: Alignment.topLeft,
-          //           end: Alignment.bottomRight,
-          //         )
-          //       ),
-          //     ),
-          //     title: Text(
-          //       cubit.titlesScreen[cubit.currentindex],
-          //       style: const TextStyle(
-          //         color: Colors.white,
-          //       ),
-          //     ),
-          //     actions: [
-          //       IconButton(
-          //         onPressed: () {
-          //           navigateto(
-          //             context,
-          //             SearchScreen(),
-          //           );
-          //         },
-          //         icon: cubit.currentindex == 0
-          //             ? const Icon(
-          //                 Icons.search,
-          //                 color: Colors.white,
-          //               )
-          //             : const Text(""),
-          //       ),
-          //     ],
-          //   ),
-          //   body: cubit.bottomscreen[cubit.currentindex],
-          //   bottomNavigationBar: CurvedNavigationBar(
-          //     index: ShopCubit.get(context).currentindex,
-          //     onTap: (value) => ShopCubit.get(context).ChangeBottom(value),
-          //     color:  HexColor('#087083'),
-          //     backgroundColor: Colors.white,
-          //     animationDuration: const Duration(milliseconds: 300),
-          //     height: 55,
-          //     items: const
-          //     [
-          //        Icon(Icons.home,size: 30,color: Colors.white,),
-          //        Icon(Icons.linked_camera_outlined,size: 30,color: Colors.white,),
-          //        Icon(Icons.favorite_outline_rounded,size: 30,color: Colors.white,),
-          //        Icon(Icons.person,size: 30,color: Colors.white,),
-          //     ],
-          //   ),
-          //   drawer: Drawer(
-          //     child: Padding(
-          //       padding: const EdgeInsets.all(20.0),
-          //       child: Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: ShopCubit.get(context).index == 0
-          //             ? getList1(context) : getList2(context),
-          //
-          //       ),
-          //     ),
-          //   ),
-          // );
         },
       ),
     );
   }
 
-  
+
 
 
 }
@@ -200,11 +136,11 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     return
       Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: ShopCubit.get(context).index == 0
-                  ? getList1(context) : getList2(context),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: ShopCubit.get(context).index == 0
+            ? getList1(context) : getList2(context),
 
-            );
+      );
 
   }
 
@@ -231,9 +167,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   fit: BoxFit.cover,
                 ),
               ),
-      ),
             ),
-         const Text(
+          ),
+          const Text(
             "Ahmed Essam",
             style: TextStyle(
               fontSize: 20,
@@ -298,6 +234,20 @@ class _DrawerScreenState extends State<DrawerScreen> {
         },
         leading: const Icon(
           Icons.settings,
+          color: Colors.white,
+        ),
+      ),
+      myDivider(),
+      ListTile(
+        title: const Text(
+          'Edit Profile',
+          style: TextStyle(color: Colors.white),
+        ),
+        onTap: () {
+          navigateto(context,  EditProfile());
+        },
+        leading: const Icon(
+          Icons.person,
           color: Colors.white,
         ),
       ),
@@ -394,10 +344,9 @@ class DrawerWidget extends StatelessWidget {
       {
         ZoomDrawer.of(context)!.toggle();
       },
-      icon: Icon(Icons.menu),
+      icon: const Icon(Icons.menu),
     );
   }
 }
-
 
 

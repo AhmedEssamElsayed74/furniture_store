@@ -113,20 +113,6 @@ class CheckOutScreen extends StatelessWidget {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  // defaultformfield(
-                  //   controller:cardcontroller,
-                  //   type: TextInputType.phone,
-                  //   validate: (value) {
-                  //     if (value.isEmpty) {
-                  //       return 'card must not be empty';
-                  //     }
-                  //   },
-                  //   label: 'Card Number',
-                  //   prefix: Icons.phone,
-                  // ),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
                   const SizedBox(
                     height: 40.0,
                   ),
@@ -135,36 +121,40 @@ class CheckOutScreen extends StatelessWidget {
                     builder: (context) => Center(
                       child: defaultButton(
                         function: () {
-                          var alert = AlertDialog(
-                            content: Container(
-                              height: 200,
-                              child: Column(
-                                children: const [
-                                  Image(
-                                    image: AssetImage('image/true.png'),
-                                    width: 80,
-                                    height: 60,
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Text('Success',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25,
-                                    ),
-                                  ),
-                                  SizedBox(height: 35,),
-                                  Text('waah,you have Successfully',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
 
-                                ],
+                          if (formkey.currentState!.validate())
+                          {
+                            var alert = AlertDialog(
+                              content: Container(
+                                height: 200,
+                                child: Column(
+                                  children: const [
+                                    Image(
+                                      image: AssetImage('image/true.png'),
+                                      width: 80,
+                                      height: 60,
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Text('Success',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25,
+                                      ),
+                                    ),
+                                    SizedBox(height: 35,),
+                                    Text('waah,you have Successfully',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                          showDialog(context: context, builder: (context) => alert);
+                            );
+                            showDialog(context: context, builder: (context) => alert);
+                          }
                         },
                         text: 'Confirm',
                       ),

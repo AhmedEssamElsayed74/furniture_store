@@ -27,15 +27,57 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int totalprice = 0;
 
-  // IconData favourites = Icons.favorite_outlined;
-  // bool isfavourites = false;
-  //
-  // void changefavourit()
-  // {
-  //   isfavourites=!isfavourites;
-  //   favourites = isfavourites? Icons.favorite_outlined : Icons.favorite_outline_rounded;
-  //   emit(changefavourite());
-  // }
+
+  List names =
+  [
+    'Ahmed Essam',
+    'Asmaa Elsaed',
+    'Ahmed Essam Elsayed',
+    'Asmaa Elsaed Mohamed',
+    'Ahmed Essam',
+    'Asmaa Elsaed',
+    'Ahmed Essam Elsayed',
+    'Asmaa Elsaed Mohamed',
+    'Ahmed Essam',
+    'Asmaa Elsaed',
+    'Ahmed Essam Elsayed',
+    'Asmaa Elsaed Mohamed',
+    'Ahmed Essam',
+    'Asmaa Elsaed',
+    'Ahmed Essam Elsayed',
+    'Asmaa Elsaed Mohamed',
+
+
+  ];
+
+  List email =
+  [
+    'ahmed3essamelsayed123456@gmail.com',
+    'asmaaelsaed123@gmail.com',
+    'ahmed3essamelsayed123456@gmail.com',
+    'asmaaelsaed123@gmail.com',
+    'ahmed3essamelsayed123456@gmail.com',
+    'asmaaelsaed123@gmail.com',
+    'ahmed3essamelsayed123456@gmail.com',
+    'asmaaelsaed123@gmail.com',
+
+  ];
+
+  List productcount =
+  [
+    '5',
+    '10',
+    '6',
+    '25',
+    '5',
+    '10',
+    '6',
+    '25',
+
+
+  ];
+
+  //////////////////
 
 
   List<String> titlesScreen = [
