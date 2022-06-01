@@ -6,6 +6,7 @@ import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/modules/user/login/login_screen.dart';
 import 'package:furniture_store/modules/user/notification/message_notification.dart';
 import 'package:furniture_store/modules/user/privacy%20%20and%20%20term/privacy_screen.dart';
+import 'package:furniture_store/modules/user/profile/editprofile_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,11 +21,21 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   bool switchState = false;
 
-  Widget BuildSetting()
-  {
+  Widget BuildSetting() {
     return Scaffold(
       appBar: AppBar(
-
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  HexColor('#087083'),
+                  HexColor('#5AB5C6'),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              )
+          ),
+        ),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -34,108 +45,131 @@ class _SettingScreenState extends State<SettingScreen> {
             Navigator.pop(context);
           },
         ),
+        title: const Text(
+          "Settings",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25
+          ),
+        ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            color: HexColor('#087083'),
-            height: 100,
-            width: double.infinity,
-            child: const Text(
-              "Settings",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 40,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('LogOut'),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              navigateAndFinish(context, LoginScreen());
-            },
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Text(
-              'General Setting',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 5,
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.notifications),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: SwitchListTile(
-                  title: const Text("Notification"),
-                  value: switchState,
-                  onChanged: (value) {
-                    setState(() {
-                      switchState = value;
-                    });
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Center(
+                  child: Image(
+                    image: AssetImage('image/settings.gif'),
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
+                const SizedBox(height: 15,),
+                const Center(
+                  child: Text(
+                    'General Setting',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30.0,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: const Text('LogOut'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    navigateAndFinish(context, LoginScreen());
                   },
                 ),
-              ),
-            ],
-          ),
-          myDivider(),
-          switchState == true
-              ? ListTile(
-            leading: const Icon(Icons.list),
-            title: const Text("Notify Messages"),
-            onTap: () {
-              navigateto(context, const MessageScreen());
-            },
-            trailing: const Icon(Icons.arrow_forward_ios),
-          )
-              : const SizedBox(height: 0),
-          myDivider(),
-          ListTile(
-            leading: const Icon(Icons.task),
-            title: const Text("Privacy and term"),
-            onTap: () {
-              navigateto(context, const PrivacyScreen());
-            },
-            trailing: const Icon(Icons.arrow_forward_ios),
-          ),
-          myDivider(),
-          Row(
-            children: [
-              SizedBox(width: 70,),
-
-              Text("Dark mode",style: TextStyle(fontSize: 18,),),
-              Spacer(),
-              IconButton(
-                  onPressed: () {
-                    ShopCubit.get(context).ChangeAppTheme();
+                myDivider(),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.notifications),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: SwitchListTile(
+                        title: const Text("Notification"),
+                        value: switchState,
+                        onChanged: (value) {
+                          setState(() {
+                            switchState = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                myDivider(),
+                switchState == true
+                    ? ListTile(
+                        leading: const Icon(Icons.list),
+                        title: const Text("Notify Messages"),
+                        onTap: () {
+                          navigateto(context, const MessageScreen());
+                        },
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                      )
+                    : const SizedBox(height: 0),
+                myDivider(),
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: const Text('Edit Profile'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    navigateto(context, EditProfile());
                   },
-                  icon: Icon(Icons.brightness_4_outlined))
-            ],
+                ),
+                myDivider(),
+                ListTile(
+                  leading: const Icon(Icons.task),
+                  title: const Text("Privacy and term"),
+                  onTap: () {
+                    navigateto(context, const PrivacyScreen());
+                  },
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                ),
+                myDivider(),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 70,
+                    ),
+                    const Text(
+                      "Dark mode",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                        onPressed: () {
+                          ShopCubit.get(context).ChangeAppTheme();
+                        },
+                        icon: const Icon(Icons.brightness_4_outlined))
+                  ],
+                ),
+                myDivider(),
+              ],
+            ),
           ),
-          myDivider(),
-        ],
+        ),
       ),
       floatingActionButton: FabCircularMenu(
           alignment: Alignment.bottomRight,
@@ -203,31 +237,27 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
           ]),
     );
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body:
-        OfflineBuilder(
+        body: OfflineBuilder(
             connectivityBuilder: (
-                BuildContext context,
-                ConnectivityResult connectivity,
-                Widget child,
-                ) {
+              BuildContext context,
+              ConnectivityResult connectivity,
+              Widget child,
+            ) {
               final bool connected = connectivity != ConnectivityResult.none;
-              if(connected){
+              if (connected) {
                 return BuildSetting();
-              }else
-              {
+              } else {
                 return BuildNoInternetWidget();
               }
             },
-            child: const Center(child: CircularProgressIndicator(),)
-        )
-    );
+            child: const Center(
+              child: CircularProgressIndicator(),
+            )));
   }
 
   openwhatsapp() async {

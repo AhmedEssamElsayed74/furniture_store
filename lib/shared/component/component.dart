@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:furniture_store/shared/style/color.dart';
@@ -225,16 +226,48 @@ Widget defaultButton2({
             const SizedBox(height: 20,),
             const Padding(
               padding: EdgeInsets.all(9.0),
-              child: Text(
-                  "No internet connection, please check your connection and try again",
-                maxLines: 2,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
+              // child: Text(
+              //     "No internet connection, please check your connection and try again",
+              //   maxLines: 2,
+              //   style: TextStyle(
+              //     fontSize: 18,
+              //     fontWeight: FontWeight.bold
+              //   ),
+              // ),
             ),
-            Image.asset("image/no_internet.png"),
+            const Icon((Icons.wifi),size: 90,color: Colors.grey,),
+            const Icon((Icons.warning),size: 35,color: Colors.grey,),
+            SizedBox(height: 5,),
+            const Text("No internet connection",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+            SizedBox(height: 5,),
+            const Text("Try these step to get back online:",style: TextStyle(fontSize: 18,),),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Icon(Icons.check_circle_outlined),
+                SizedBox(width: 10,),
+                Text("Check your modem and router",style: TextStyle(fontSize: 16,),),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle_outline_rounded),
+                SizedBox(width: 10,),
+                Text("Reconnect to Wi_Fi",style: TextStyle(fontSize: 16,),),
+                SizedBox(width: 77,),
+
+              ],
+            ),
+
+
+
+
+            // Image.asset("image/no internet.jpg",fit: BoxFit.cover,width: 300,height: 250,),
           ],
         ),
       ),
