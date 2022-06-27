@@ -43,7 +43,6 @@ class DetailsProduct extends StatelessWidget {
                 const SizedBox(height: 15,),
                 MaterialButton(
                   onPressed: (){},
-
                   child: const Text(
                     'Send',
                     style: TextStyle(
