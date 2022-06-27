@@ -43,7 +43,6 @@ class sellerOrders extends StatelessWidget {
                 const SizedBox(height: 15,),
                 MaterialButton(
                   onPressed: (){},
-
                   child: const Text(
                     'Done',
                     style: TextStyle(
