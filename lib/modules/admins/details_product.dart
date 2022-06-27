@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/modules/user/ditals/ditals_screen.dart';
-import 'package:furniture_store/modules/user/favourite/favourite_screen.dart';
 import 'package:furniture_store/shared/component/component.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -33,14 +31,7 @@ class DetailsProduct extends StatelessWidget {
                 ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) =>
-                      GestureDetector(
-                          onTap: ()
-                          {
-                            navigateto(context, const DetailsScreen());
-                          },
-                          child: buildListProductItem2()
-                      ),
+                  itemBuilder: (context, index) => buildListProductItem2(),
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 1,
                   ),
@@ -49,7 +40,6 @@ class DetailsProduct extends StatelessWidget {
                 const SizedBox(height: 15,),
                 MaterialButton(
                   onPressed: (){},
-
                   child: const Text(
                     'Send',
                     style: TextStyle(
