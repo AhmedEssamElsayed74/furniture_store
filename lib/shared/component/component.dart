@@ -393,28 +393,7 @@ Widget buildListProductItem2({
                       height: 15.0,
                     ),
 
-                    //_________ add to cart and favourite
-                    // Row(
-                    //   children: [
-                    //     MaterialButton(
-                    //       onPressed: (){},
-                    //
-                    //       child:  Text(
-                    //         buttonName,
-                    //         style: TextStyle(color: Colors.white),
-                    //       ),
-                    //       padding: EdgeInsets.zero,
-                    //       color: HexColor('#087083'),
-                    //       highlightColor: Colors.teal,
-                    //     ),
-                    //     const Spacer(),
-                    //     IconButton(
-                    //       onPressed: (){},
-                    //       icon: iconName,
-                    //
-                    //     ),
-                    //   ],
-                    // ),
+
                   ],
                 ),
               ),
