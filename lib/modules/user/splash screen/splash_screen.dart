@@ -15,30 +15,27 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 5),
-        ()=>Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context)=>
-            LoginScreen()
-        ))
+            ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context)=>
+                LoginScreen()
+            ))
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('#5AB5C6'),
+      backgroundColor: Colors.black38,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            children: const [
-              Image(
-                  image: AssetImage('image/Capture.png'),
-                width: double.infinity,
-              ),
-            ],
+        children: const [
+          Image(
+            image: AssetImage('image/splash2.jpg'),
+            width: double.infinity,
+            height: 500,
           ),
-          const CircularProgressIndicator(
+          CircularProgressIndicator(
             color: Colors.white,
           ),
         ],
