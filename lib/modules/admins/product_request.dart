@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:furniture_store/layout/cubit/cubit.dart';
 import 'package:furniture_store/layout/cubit/states.dart';
-import 'package:furniture_store/modules/user/requests/details_product.dart';
+import 'package:furniture_store/modules/admins/details_product.dart';
 import 'package:furniture_store/shared/component/component.dart';
 
 class ProductRequest extends StatelessWidget {
