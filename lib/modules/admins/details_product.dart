@@ -34,13 +34,7 @@ class DetailsProduct extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) =>
-                      GestureDetector(
-                          onTap: ()
-                          {
-                            navigateto(context, const DetailsScreen());
-                          },
-                          child: buildListProductItem2()
-                      ),
+                      buildListProductItem2(),
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 1,
                   ),
